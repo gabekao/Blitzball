@@ -21,13 +21,17 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private string groundTag = "Ground";
 
     [SerializeField] private bool wallJumpEnabled = true;
+    [SerializeField] private bool wallJumpLimited = true;
     private float wallJumpTimer = 0.5f;
     private float wallJumpTimerCurrent = 0.0f;
+
+    private bool wallJumped = false;
 
     // Properties
     public float MoveSpeed { get => moveSpeed; set => moveSpeed = value; }
     public float JumpSpeed { get => jumpSpeed; set => jumpSpeed = value; }
     public bool WallJumpEnabled { get => wallJumpEnabled; set => wallJumpEnabled = value; }
+    public bool WallJumpLimited { get => wallJumpLimited; set => wallJumpLimited = value; }
 
     // Start is called before the first frame update
     void Start()
@@ -80,7 +84,7 @@ public class PlayerMovement : MonoBehaviour
 
         Vector3 hitOffset = new Vector3(0.0f, 0.0f, collider.radius - 0.02f);
 
-
+        
 
         // center hit
         Debug.DrawRay(transform.position, Vector3.down);
@@ -88,7 +92,9 @@ public class PlayerMovement : MonoBehaviour
         {
             if (hit.collider.CompareTag(groundTag))
             {
+                wallJumped = false;
                 return true;
+
             }
         }
 
@@ -102,6 +108,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 if (hit.collider.CompareTag(groundTag))
                 {
+                    wallJumped = false;
                     return true;
                 }
             }
@@ -112,6 +119,9 @@ public class PlayerMovement : MonoBehaviour
 
     void CheckWalljump(Quaternion cameraRotationY)
     {
+        if (wallJumpLimited && wallJumped)
+            return;
+
         RaycastHit hit;
         Vector3 horizontalInputVector = cameraRotationY * new Vector3(Input.GetAxisRaw("Horizontal"), 0.0f, Input.GetAxisRaw("Vertical")).normalized;
 
@@ -122,6 +132,9 @@ public class PlayerMovement : MonoBehaviour
             {
                 Vector3 reflection = Vector3.Reflect(horizontalInputVector * rb.velocity.magnitude, hit.normal).normalized;
                 wallJumpTimerCurrent = wallJumpTimer;
+
+                if (wallJumpLimited)
+                    wallJumped = true;
 
                 // otherwise the velocity stacks and it zooms
                 rb.velocity = Vector3.zero;
