@@ -39,6 +39,7 @@
      <Compile Include="Assets\Scripts\CheckpointController.cs" />
      <Compile Include="Assets\Scripts\GameController.cs" />
      <Compile Include="Assets\Scripts\GroundedChecker.cs" />
+     <Compile Include="Assets\Scripts\MenuController.cs" />
      <Compile Include="Assets\Scripts\OrbitCam.cs" />
      <Compile Include="Assets\Scripts\PlayerController.cs" />
     <Reference Include="UnityEngine">
