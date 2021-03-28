@@ -3,13 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
+    //Checkpoint position handling variables:
+    [SerializeField] private GameController game;
 
-    [SerializeField] private float moveSpeed = 5.0f;
-    [SerializeField] private float jumpSpeed = 10.0f;
-    [SerializeField] private float wallJumpForceHorizontal = 5.0f;
-    [SerializeField] private float wallJumpForceVertical = 5.0f;
+    [SerializeField] private float moveSpeed = 8.0f;
+    [SerializeField] private float jumpSpeed = 8.0f;
+    [SerializeField] private float wallJumpForceHorizontal = 8.0f;
+    [SerializeField] private float wallJumpForceVertical = 8.0f;
     
 
     private Vector3 moveVector = Vector3.zero;
@@ -21,7 +23,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private string groundTag = "Ground";
 
     [SerializeField] private bool wallJumpEnabled = true;
-    [SerializeField] private bool wallJumpLimited = true;
+    [SerializeField] private bool wallJumpLimited = false;
     private float wallJumpTimer = 0.5f;
     private float wallJumpTimerCurrent = 0.0f;
 
@@ -44,6 +46,10 @@ public class PlayerMovement : MonoBehaviour
         }
 
         collider = GetComponent<SphereCollider>();
+
+        //Checkpoint position handling:
+        game = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
+        transform.position = game.lastCheckpointPos;
         
     }
 
@@ -145,4 +151,13 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter(Collider other){
+        switch(other.gameObject.tag){
+            case "Death":
+                game.Restart();
+                break;
+            default:
+                break;
+        }
+    }
 }

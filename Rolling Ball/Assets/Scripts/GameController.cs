@@ -5,6 +5,16 @@ using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
+    private static GameController instance;
+    public Vector3 lastCheckpointPos;
+    void Awake(){
+        if (instance == null){
+            instance = this;
+            DontDestroyOnLoad(instance);
+        } else {
+            Destroy(gameObject);
+        }
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -14,14 +24,12 @@ public class GameController : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown("r")){
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            Restart();
             //Debug.Log("R");
         }    
     }
 
-    // private void OnTriggerEnter(Collider other){
-    //     if (transform.IsChildOf("Checkpoints")){
-    //         Debug.Log("Checkpoint!");
-    //     }
-    // }
+    public void Restart(){
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
 }
