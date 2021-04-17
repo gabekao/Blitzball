@@ -49,6 +49,8 @@ public class MenuController : MonoBehaviour
 
     public void PauseGame()
     {
+        SaveData.current.ghostPositions = new List<GhostData>(SaveData.current.currentPositions);
+        SerializationManager.Save("ghostRead", SaveData.current);
         menuPanel.SetActive(true);
         isPaused = true;
         Time.timeScale = 0;

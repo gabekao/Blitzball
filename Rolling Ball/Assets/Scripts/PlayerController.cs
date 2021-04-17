@@ -29,6 +29,7 @@ public class PlayerController : MonoBehaviour
     private float wallJumpTimerCurrent = 0.0f;
 
     private bool wallJumped = false;
+    private bool saved = false;
 
     // Properties
     public float MoveSpeed { get => moveSpeed; set => moveSpeed = value; }
@@ -36,10 +37,10 @@ public class PlayerController : MonoBehaviour
     public bool WallJumpEnabled { get => wallJumpEnabled; set => wallJumpEnabled = value; }
     public bool WallJumpLimited { get => wallJumpLimited; set => wallJumpLimited = value; }
 
+
     // Start is called before the first frame update
     void Start()
     {
-        LoadPlayer();
         rb = GetComponent<Rigidbody>();
 
         if (cameraTransform == null)
@@ -85,7 +86,7 @@ public class PlayerController : MonoBehaviour
         {
             CheckWalljump(cameraRotationFlattened);
         }
-        SaveData.savePosotion(this);
+
     }
 
     bool CheckGrounded()
@@ -117,7 +118,7 @@ public class PlayerController : MonoBehaviour
         for (int i = 0; i < 8; i++)
         {
             Vector3 hitOffsetRotated = Quaternion.Euler(0.0f, 360 / 8 * i, 0.0f) * hitOffset;
-            Debug.Log(hitOffsetRotated);
+            //Debug.Log(hitOffsetRotated);
             Debug.DrawRay(transform.position + hitOffsetRotated, Vector3.down);
             if (Physics.Raycast(transform.position + hitOffsetRotated, Vector3.down, out hit, collisionDistanceCheck))
             {
@@ -180,11 +181,5 @@ public class PlayerController : MonoBehaviour
             default:
                 break;
         }
-    }
-
-    public void LoadPlayer()
-    {
-        string data = SaveData.LoadPlayer();
-        Debug.Log(data);
     }
 }
