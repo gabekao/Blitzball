@@ -148,7 +148,7 @@ public class PlayerController : MonoBehaviour
         Vector3 rayOffset = Vector3.forward * (collider.radius + 0.1f);
         int numRays = 10;
         
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < numRays; i++)
         {
             Vector3 sweepRotationOffsetV = Quaternion.Euler(0.0f, -45 + ((90 / numRays) * i), 0.0f) * horizontalInputVector;
             Debug.DrawRay(transform.position, sweepRotationOffsetV);
