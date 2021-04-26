@@ -5,13 +5,16 @@ using UnityEngine.SceneManagement;
 
 public class MenuController : MonoBehaviour
 {
-    private bool isPaused = false;
+    //🔴 Lmao this method is so scuffed. Sorry for the ugliness.
     [SerializeField] private GameObject menuPanel;
+    [SerializeField] private GameObject leaderboardPanel;
+    [SerializeField] private GameObject[] ranks;
+    private bool isPaused = false;
+    private bool isLeaderboard = false;
 
-    // Start is called before the first frame update
-    void Start()
+    public void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -19,10 +22,15 @@ public class MenuController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape) && SceneManager.GetActiveScene().name != "StartMenu")
         {
-            if (!isPaused)
-                PauseGame();
+            if (!isLeaderboard)
+            {
+                if (!isPaused)
+                    PauseGame();
+                else
+                    ResumeGame();
+            }
             else
-                ResumeGame();
+                ExitLeaderboard();
         }
     }
 
@@ -49,8 +57,6 @@ public class MenuController : MonoBehaviour
 
     public void PauseGame()
     {
-        SaveData.current.ghostPositions = new List<GhostData>(SaveData.current.currentPositions);
-        SerializationManager.Save("ghostRead", SaveData.current);
         menuPanel.SetActive(true);
         isPaused = true;
         Time.timeScale = 0;
@@ -61,6 +67,50 @@ public class MenuController : MonoBehaviour
         menuPanel.SetActive(false);
         isPaused = false;
         Time.timeScale = 1;
+    }
+
+    public void OpenLeaderBoard()
+    {
+        menuPanel.SetActive(false);
+        leaderboardPanel.SetActive(true);
+        PopulateLeaderboard();
+        isLeaderboard = true;
+    }
+
+    public void ExitLeaderboard()
+    {
+        leaderboardPanel.SetActive(false);
+        menuPanel.SetActive(true);
+        isLeaderboard = false;
+    }
+
+    public void PopulateLeaderboard()
+    {
+        int count = SaveData.current.lbData.Count;
+        string date = System.DateTime.Now.ToString("MM/dd/yyyy");
+
+        if (count > 0)
+        {
+            for (int i = 0; i < count; i++)
+            {
+                System.TimeSpan time = System.TimeSpan.FromSeconds(SaveData.current.lbData[i].time);
+                string t = string.Format("{0:D2}:{1:D2}:{2:D2}", time.Minutes, time.Seconds, time.Milliseconds);
+                string name = SaveData.current.lbData[i].name;
+                int rank = SaveData.current.lbData[i].rank;
+                ranks[rank - 1].GetComponent<TMPro.TextMeshProUGUI>().text = string.Format("{0, 1}\t\t{1, 3}\t\t{2, 9}\t\t{3, 10}", rank, name, t, date);
+            }
+        }
+        if (count < 5)
+            FillEmptySpots(count);
+    }
+
+
+    void FillEmptySpots(int filled)
+    {
+        for (int i = filled; i < ranks.Length; i++)
+        {
+            ranks[i].GetComponent<TMPro.TextMeshProUGUI>().text = string.Format("{0, 1}\t\t{1, 3}\t\t{2, 9}\t\t{3, 10}", (i + 1).ToString(), "---", "00:00:000", "00/00/0000");
+        }
     }
 
     // Game is now over

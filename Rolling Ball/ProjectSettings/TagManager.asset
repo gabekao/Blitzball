@@ -8,6 +8,7 @@ TagManager:
   - Checkpoint
   - Death
   - Ghost
+  - FinishLine
   layers:
   - Default
   - TransparentFX

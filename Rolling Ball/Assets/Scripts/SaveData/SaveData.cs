@@ -31,6 +31,9 @@ public class SaveData
     // Contains player information
     public PlayerProfile profile = new PlayerProfile();
 
+    // Contains leaderboard information
+    public List<LeaderboardData> lbData = new List<LeaderboardData>();
+
     // Records current positions being mapped
     public List<GhostData> currentPositions = new List<GhostData>();
 

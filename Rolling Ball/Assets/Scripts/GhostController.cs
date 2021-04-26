@@ -1,12 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GhostController : MonoBehaviour
 {
     [SerializeField] GameObject player;             // Player object
     [SerializeField] GameObject ghostPrefab;        // Ghost prefab object
 
+    GameObject finishLine;  // Finish line
     GameObject ghost;       // Ghost object moving around
 
     int counter = 0;            // Ghost position counter
@@ -24,6 +26,8 @@ public class GhostController : MonoBehaviour
         if (!ghostPrefab)
             ghostPrefab = GameObject.FindGameObjectWithTag("Ghost");
 
+        if (!finishLine)
+            finishLine = GameObject.FindGameObjectWithTag("FinishLine");
         // Check to see if load file available
         CheckGhost();
     }
@@ -31,8 +35,17 @@ public class GhostController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Every 3 frames perform action
-        if ((frame % 4) == 0)
+        if (!player)
+        {
+            player = GameObject.FindGameObjectWithTag("Player");
+            CheckGhost();
+        }
+        if (!finishLine)
+            finishLine = GameObject.FindGameObjectWithTag("FinishLine");
+
+        Debug.Log(finishLine.GetComponent<FinishController>().isFinished);
+        // Perform action every 3 frames while not finished
+        if ((frame % 4) == 0 && !finishLine.GetComponent<FinishController>().isFinished)
         {
             // Load ghost if load file exists
             if (ghostExists)
@@ -44,13 +57,13 @@ public class GhostController : MonoBehaviour
         }
         // Increment frame counter
         frame++;
-        Debug.Log(Time.timeSinceLevelLoad);
+        //Debug.Log(Time.timeSinceLevelLoad);
     }
 
     // Saves player positions as ghost data
     public void SaveGhost()
     {
-        //Create new ghost data object containing player positions/rotation
+        // Create new ghost data object containing player positions/rotation
         GhostData ghostData = new GhostData
         {
             position = player.transform.position,
@@ -80,7 +93,7 @@ public class GhostController : MonoBehaviour
     public void CheckGhost()
     {
         // Read save data
-        SaveData.current = (SaveData)SerializationManager.Load(Application.persistentDataPath + "/saves/ghostRead.data");
+        SaveData.current = (SaveData)SerializationManager.Load(Application.persistentDataPath + "/saves/ghost_" + SceneManager.GetActiveScene().name + ".data");
         // Clear current positions
         //SaveData.current.currentPositions.Clear();
 

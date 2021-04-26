@@ -3746,7 +3746,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh18188
+  m_Name: pb_Mesh50530
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -6704,7 +6704,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh18312
+  m_Name: pb_Mesh50654
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -8190,7 +8190,6 @@ MonoBehaviour:
   cameraTransform: {fileID: 0}
   collisionDistanceCheck: 0.6
   groundTag: Ground
-  deathTag: Death
   wallJumpEnabled: 1
   wallJumpLimited: 0
 --- !u!135 &700302000
@@ -9437,7 +9436,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh17500
+  m_Name: pb_Mesh49840
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -10513,6 +10512,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   menuPanel: {fileID: 6876868775620502736}
+  leaderboardPanel: {fileID: 0}
+  ranks: []
 --- !u!4 &839719965
 Transform:
   m_ObjectHideFlags: 0
@@ -18428,7 +18429,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh17792
+  m_Name: pb_Mesh50134
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -19766,7 +19767,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh18056
+  m_Name: pb_Mesh50398
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
