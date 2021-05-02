@@ -1,0 +1,49 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!319 &31900000
+AvatarMask:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: flyingenemy_body
+  m_Mask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+  m_Elements:
+  - m_Path: 
+    m_Weight: 1
+  - m_Path: Backpack
+    m_Weight: 1
+  - m_Path: Eye
+    m_Weight: 1
+  - m_Path: FlyingEnemyEye
+    m_Weight: 1
+  - m_Path: FlyingEnemyEye/Base
+    m_Weight: 1
+  - m_Path: FlyingEnemyEye/Base/EyeBone
+    m_Weight: 1
+  - m_Path: FlyingEnemyEye/Base/Gun 1
+    m_Weight: 1
+  - m_Path: FlyingEnemyEye/Base/Propeller 1
+    m_Weight: 1
+  - m_Path: Gun
+    m_Weight: 1
+  - m_Path: GunMount
+    m_Weight: 1
+  - m_Path: LowerShell
+    m_Weight: 1
+  - m_Path: Propeller
+    m_Weight: 0
+  - m_Path: Propeller.001
+    m_Weight: 0
+  - m_Path: Propeller.002
+    m_Weight: 0
+  - m_Path: Propeller.003
+    m_Weight: 0
+  - m_Path: Propeller.004
+    m_Weight: 0
+  - m_Path: PropShaft
+    m_Weight: 1
+  - m_Path: Tubes
+    m_Weight: 1
+  - m_Path: UpperShell
+    m_Weight: 1
