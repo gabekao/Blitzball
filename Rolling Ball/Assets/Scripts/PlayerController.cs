@@ -3,33 +3,53 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class PlayerController : MonoBehaviour
+public class PlayerMovement : MonoBehaviour
 {
-    //Checkpoint position handling variables:
-    [SerializeField] private GameController game;
+    [Header("Speed Variables")]
+    [SerializeField] private float moveSpeed = 5.0f;
+    [SerializeField] private float jumpSpeed = 10.0f;
 
-    [SerializeField] private float moveSpeed = 8.0f;
-    [SerializeField] private float jumpSpeed = 8.0f;
-    [SerializeField] private float wallJumpForceHorizontal = 8.0f;
-    [SerializeField] private float wallJumpForceVertical = 8.0f;
-    
 
+    [Header("Special Terrain")]
+    [SerializeField] private float sandyGroundAngularDrag = 20.0f;
+    [SerializeField] private float sandyGroundJumpMultiplier = 0.5f;
+    [SerializeField] private float sandyGroundSpeedMultiplier = 0.725f;
+
+    [SerializeField] private float rubberGroundJumpMultiplier = 1.5f;
+    [Range(0, 1)]
+    [SerializeField] private float rubberGroundBounciness = 0.5f;
+
+    [SerializeField] private float slipperyAngularDrag = 0.0f;
+    [SerializeField] private float slipperySpeedMultiplier = 1.5f;
+    [SerializeField] private float slipperyJumpMultiplier = 0.75f;
+    private SpecialTerrainType currentSpecialTerrain = SpecialTerrainType.None;
+
+
+    [Header("Wall Jump Variables")]
+    [SerializeField] private float wallJumpForceHorizontal = 5.0f;
+    [SerializeField] private float wallJumpForceVertical = 5.0f;
+    [SerializeField] private bool wallJumpEnabled = true;
+    [SerializeField] private bool wallJumpLimited = true;
+    [SerializeField] private bool wallJumpOnlyWhenMovingDownwards = false;
+
+
+    [Header("Collision Variables")]
+    [SerializeField] private float collisionDistanceCheck = 0.6f;
+    [SerializeField] private string groundTag = "Ground";
+
+    [Header("References")]
     private Vector3 moveVector = Vector3.zero;
     private Rigidbody rb;
     [SerializeField] private Transform cameraTransform;
 
     private SphereCollider collider;
-    [SerializeField] private float collisionDistanceCheck = 0.6f;
-    [SerializeField] private string groundTag = "Ground";
-    [SerializeField] private string deathTag = "Death";
+    private float originalAngularDrag;
 
-    [SerializeField] private bool wallJumpEnabled = true;
-    [SerializeField] private bool wallJumpLimited = false;
+
     private float wallJumpTimer = 0.5f;
     private float wallJumpTimerCurrent = 0.0f;
 
     private bool wallJumped = false;
-    private bool saved = false;
 
     // Properties
     public float MoveSpeed { get => moveSpeed; set => moveSpeed = value; }
@@ -37,56 +57,95 @@ public class PlayerController : MonoBehaviour
     public bool WallJumpEnabled { get => wallJumpEnabled; set => wallJumpEnabled = value; }
     public bool WallJumpLimited { get => wallJumpLimited; set => wallJumpLimited = value; }
 
+    private Vector3 previousVelocity;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-
+        previousVelocity = rb.velocity;
+        originalAngularDrag = rb.angularDrag;
         if (cameraTransform == null)
         {
             cameraTransform = GameObject.FindGameObjectWithTag("MainCamera").transform;
         }
 
         collider = GetComponent<SphereCollider>();
-
-        //Checkpoint position handling:
-        game = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
-        transform.position = game.lastCheckpointPos;
         
     }
 
     private void Update()
     {
-        CheckGrounded();
+        float jumpMult = 1.0f;
+        switch (currentSpecialTerrain)
+        {
+            case SpecialTerrainType.None:
+                rb.angularDrag = originalAngularDrag;
+                break;
+
+            case SpecialTerrainType.Sand:
+                rb.angularDrag = sandyGroundAngularDrag;
+                jumpMult = sandyGroundJumpMultiplier;
+                break;
+
+            case SpecialTerrainType.Rubber:
+                jumpMult = rubberGroundJumpMultiplier;
+                break;
+
+            case SpecialTerrainType.Slippery:
+                rb.angularDrag = slipperyAngularDrag;
+                jumpMult = slipperyJumpMultiplier;
+                break;
+        }
+
         // For some reason, this works better over here
         if (Input.GetButtonDown("Jump"))
         {
             if (CheckGrounded())
             {
-                rb.velocity = new Vector3(rb.velocity.x, jumpSpeed, rb.velocity.z);
+
+                rb.velocity = new Vector3(rb.velocity.x, jumpSpeed * jumpMult, rb.velocity.z);
             }
         }
 
         if (wallJumpTimerCurrent > 0)
             wallJumpTimerCurrent -= Time.deltaTime;
+
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
+        CheckIfTerrainIsSpecial();
         Quaternion cameraRotationFlattened = Quaternion.Euler(0.0f, cameraTransform.rotation.eulerAngles.y, 0.0f);
 
         moveVector = cameraRotationFlattened * (Input.GetAxis("Horizontal") * Vector3.right + Input.GetAxis("Vertical") * Vector3.forward);
+        if (moveVector.magnitude > 1.0f)
+            moveVector = moveVector.normalized;
+        float modSpeed = 1.0f;
+
+        switch(currentSpecialTerrain)
+        {
+            case SpecialTerrainType.None:
+                break;
+
+            case SpecialTerrainType.Sand:
+                modSpeed = sandyGroundSpeedMultiplier;
+                break;
+
+            case SpecialTerrainType.Slippery:
+                modSpeed = slipperySpeedMultiplier;
+                break;
+        }
 
         if (wallJumpTimerCurrent <= 0)
-            rb.AddForce(moveVector * moveSpeed);
+            rb.AddForce(moveVector * moveSpeed * modSpeed);
+
 
         if (wallJumpEnabled && Input.GetButtonDown("Jump"))
         {
             CheckWalljump(cameraRotationFlattened);
         }
-
     }
 
     bool CheckGrounded()
@@ -104,13 +163,9 @@ public class PlayerController : MonoBehaviour
             if (hit.collider.CompareTag(groundTag))
             {
                 wallJumped = false;
+
                 return true;
 
-            }
-            if (hit.collider.CompareTag(deathTag))
-            {
-                rb.velocity = Vector3.zero;
-                this.transform.position = game.lastCheckpointPos;
             }
         }
 
@@ -118,7 +173,7 @@ public class PlayerController : MonoBehaviour
         for (int i = 0; i < 8; i++)
         {
             Vector3 hitOffsetRotated = Quaternion.Euler(0.0f, 360 / 8 * i, 0.0f) * hitOffset;
-            //Debug.Log(hitOffsetRotated);
+            Debug.Log(hitOffsetRotated);
             Debug.DrawRay(transform.position + hitOffsetRotated, Vector3.down);
             if (Physics.Raycast(transform.position + hitOffsetRotated, Vector3.down, out hit, collisionDistanceCheck))
             {
@@ -127,20 +182,44 @@ public class PlayerController : MonoBehaviour
                     wallJumped = false;
                     return true;
                 }
-                if (hit.collider.CompareTag(deathTag))
-                {
-                rb.velocity = Vector3.zero;
-                this.transform.position = game.lastCheckpointPos;
-                }
             }
         }
 
         return false;
     }
 
+    private void LateUpdate()
+    {
+        previousVelocity = rb.velocity;
+    }
+
+    private void CheckIfTerrainIsSpecial()
+    {
+        if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, collisionDistanceCheck))
+        {
+            if (hit.collider.CompareTag(groundTag))
+            {
+                wallJumped = false;
+                SpecialTerrain checkTerrain = hit.collider.gameObject.GetComponent<SpecialTerrain>();
+                if (checkTerrain != null)
+                {
+                    currentSpecialTerrain = checkTerrain.terrainType;
+                }
+                else
+                {
+                    currentSpecialTerrain = SpecialTerrainType.None;
+                }
+            }
+        }
+        
+    }
+
     void CheckWalljump(Quaternion cameraRotationY)
     {
         if (wallJumpLimited && wallJumped)
+            return;
+
+        if (wallJumpOnlyWhenMovingDownwards && rb.velocity.y > 0)
             return;
 
         RaycastHit hit;
@@ -173,13 +252,24 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other){
-        switch(other.gameObject.tag){
-            case "Death":
-                game.Restart();
-                break;
-            default:
-                break;
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.collider.CompareTag(groundTag))
+        {
+            if (currentSpecialTerrain == SpecialTerrainType.Rubber)
+            {
+                rb.velocity = new Vector3(rb.velocity.x, -previousVelocity.y * rubberGroundBounciness , rb.velocity.z);
+            }
         }
+    }
+
+    void AlwaysDrawWallJumpRay()
+    {
+
+    }
+
+    void DetermineTerrainType()
+    {
+
     }
 }
