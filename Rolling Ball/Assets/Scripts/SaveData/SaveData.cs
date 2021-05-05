@@ -5,38 +5,18 @@ using System.Collections.Generic;
 [System.Serializable]
 public class SaveData
 {
-    // Constructing SaveData object
-    private static SaveData _current;
-    public static SaveData current
-    {
-        get
-        {
-            // If null, create new SaveData
-            if (_current == null)
-            {
-                _current = new SaveData();
-            }
-            return _current;
-        }
-        set
-        {
-            // If value passed is not null, set SaveData to value
-            if (value != null)
-            {
-                _current = value;
-            }
-        }
-    }
-
     // Contains player information
     public PlayerProfile profile = new PlayerProfile();
 
-    // Contains leaderboard information
-    public List<LeaderboardData> lbData = new List<LeaderboardData>();
-
-    // Records current positions being mapped
-    public List<GhostData> currentPositions = new List<GhostData>();
-
     // Contains previously mapped positions, if they exist
-    public List<GhostData> ghostPositions = new List<GhostData>();
+    public List<GhostData> positions = new List<GhostData>();
+
+    // Contains rank
+    public int rank;
+
+    // Contains assigned name
+    public string name;
+
+    // Contains time
+    public float time;
 }
