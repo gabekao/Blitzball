@@ -51,6 +51,8 @@ public class GhostController : MonoBehaviour
         // Initialize save data objects
         newData = new SaveData();
         loadedData = new SaveData();
+        
+        ghostExists = false;
 
         // Check to see if load file available
         CheckGhost();
@@ -60,9 +62,8 @@ public class GhostController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!menuController.isPaused)
+        if (!menuController.isPaused && menuController.start)
         {
-            //Debug.Log("Counter: " + counter);
             // Perform action every 3 frames while not finished
             if ((frame % 4) == 0 && !finishLine.GetComponent<FinishController>().isFinished)
             {

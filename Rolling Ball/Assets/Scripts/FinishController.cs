@@ -8,10 +8,11 @@ public class FinishController : MonoBehaviour
     [SerializeField] private GameObject finishPanel;        // Finish panel object
     [SerializeField] private TMPro.TMP_InputField input;    // Input field
 
-    private SaveData newData;           // New save data being worked with
-    private SaveData loadedData;        // Loaded data being worked with
-    private SaveData tmpData;           // Temporary data file
-    private SaveManager saveManager;    // Save Manager
+    private MenuController menuController;      // Menu controller for pausing
+    private SaveManager saveManager;            // Save Manager
+    private SaveData newData;                   // New save data being worked with
+    private SaveData loadedData;                // Loaded data being worked with
+    private SaveData tmpData;                   // Temporary data file
 
 
     public bool isFinished = false;     // Checks if finish line was crossed
@@ -28,6 +29,8 @@ public class FinishController : MonoBehaviour
             saveManager = GameObject.Find("GameManager").GetComponent<SaveManager>();
         if (!finishPanel)
             finishPanel = GameObject.Find("FinishPanel");
+        if (!menuController)
+            menuController = GameObject.Find("MenuController").GetComponent<MenuController>();
         if (!isFinished)
             finishPanel.SetActive(false);
     }
@@ -59,9 +62,12 @@ public class FinishController : MonoBehaviour
 
         // Set rank and time values
         g.rank = 1;
-        g.time = Time.timeSinceLevelLoad;
+        g.time = menuController.timer;
 
         tmpData = g;
+
+        // Pause game to save
+        menuController.SimplePause();
 
         // Display Input name field;
         finishPanel.SetActive(true);
@@ -73,17 +79,27 @@ public class FinishController : MonoBehaviour
         // Create directory based on scene
         string directory = "/" + SceneManager.GetActiveScene().name + "/";
 
-        // Grab name
-        string name = input.text.Substring(0,3);
+        // Initialize name
+        string name;
+
+        // Set name based on input text
+        if (input.text.Length < 3)
+            name = input.text;
+        else
+            name = input.text.Substring(0,3);
 
         // Set name
         tmpData.name = name;
 
         // Save tmpData
         SerializationManager.Save("tmp", directory, tmpData);
+
         saveManager.SortFiles();
 
         // Set finish panel to false
         finishPanel.SetActive(false);
+
+        // Reload level or load next level
+        menuController.OpenEndGamePanel();
     }
 }

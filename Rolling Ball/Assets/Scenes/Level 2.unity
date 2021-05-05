@@ -7316,7 +7316,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh77988
+  m_Name: pb_Mesh214284
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -28769,14 +28769,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   menuPanel: {fileID: 777669982579685286}
   leaderboardPanel: {fileID: 5766870434340972601}
+  timerPanel: {fileID: 0}
+  endGamePanel: {fileID: 0}
   ranks:
   - {fileID: 5766870434754978589}
   - {fileID: 5766870433934348000}
   - {fileID: 5766870435925126513}
   - {fileID: 5766870434629041742}
   - {fileID: 5766870434618849953}
+  timerText: {fileID: 0}
+  timer: 0
   isPaused: 0
-  mixer: {fileID: 0}
+  mixer: {fileID: 24100000, guid: fa610aaa0a63f8d4abe1c9341dce7220, type: 2}
 --- !u!4 &2470760710309691193
 Transform:
   m_ObjectHideFlags: 0
@@ -67684,7 +67688,7 @@ GameObject:
   - component: {fileID: 4358794510263903166}
   - component: {fileID: 4358794510263903161}
   - component: {fileID: 4358794510263903160}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Arch (1)
   m_TagString: Ground
   m_Icon: {fileID: 0}

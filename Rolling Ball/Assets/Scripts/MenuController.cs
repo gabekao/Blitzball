@@ -4,21 +4,26 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.Audio;
-using UnityEngine.UI;
-
 
 public class MenuController : MonoBehaviour
 {
     //🔴 Lmao this method is so scuffed. Sorry for the ugliness.
     [SerializeField] private GameObject menuPanel;
     [SerializeField] private GameObject leaderboardPanel;
+    [SerializeField] private GameObject timerPanel;
+    [SerializeField] private GameObject endGamePanel;
     [SerializeField] private GameObject[] ranks;
+    [SerializeField] private TMPro.TextMeshProUGUI timerText;
+
     private SaveManager saveManager;
     private GhostController ghostController;
     private FinishController finishController;
     private SaveData loadedData;
     private bool isLeaderboard = false;
+    private float timeOffset;
+    public float timer;
     public bool isPaused = false;
+    public bool start = false;
 
     //Audio Start
     [SerializeField] AudioMixer mixer;
@@ -26,11 +31,11 @@ public class MenuController : MonoBehaviour
 
     public void Start()
     {
+
         if(mixer){
             mixer.SetFloat("SFXVolume", Mathf.Log10(PlayerPrefs.GetFloat("SFXVol")) * 20);
             mixer.SetFloat("MusicVolume", Mathf.Log10(PlayerPrefs.GetFloat("MusicVol")) * 20);
         }
-
         if (SceneManager.GetActiveScene().buildIndex != 0)
         {
             if (!menuPanel)
@@ -38,6 +43,12 @@ public class MenuController : MonoBehaviour
 
             if (!leaderboardPanel)
                 leaderboardPanel = GameObject.Find("LeaderBoardPanel");
+
+            if (!timerPanel)
+                timerPanel = GameObject.Find("TimerPanel");
+
+            if (!endGamePanel)
+                endGamePanel = GameObject.Find("EndGamePanel");
 
             if (loadedData == null)
                 loadedData = GameObject.Find("GameManager").GetComponent<GhostController>().loadedData;
@@ -56,8 +67,13 @@ public class MenuController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(SceneManager.GetActiveScene().name != "StartMenu"){
-            if (Input.GetKeyDown(KeyCode.Escape)) {
+        if (!start)
+            StartTimer();
+
+        if (SceneManager.GetActiveScene().name != "StartMenu"  )
+        {
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
                 if (!isLeaderboard)
                 {
                     if (!isPaused)
@@ -65,17 +81,45 @@ public class MenuController : MonoBehaviour
                     else
                         ResumeGame();
                 }
-                else{
-                    Cursor.visible = false;
+                else
                     ExitLeaderboard();
-                }
             }
-            if (!isPaused){
-                Cursor.visible = false;
+            if (!isPaused)
+            {
                 Cursor.lockState = CursorLockMode.Locked;
-            } else
-                Cursor.lockState = CursorLockMode.Confined;
+                if(start)
+                    timerPanel.SetActive(true);
+            }
+            else
+            {
+                Cursor.lockState = CursorLockMode.None;
+                if(start)
+                    timerPanel.SetActive(false);
+            }
         }
+        if(start)
+            DisplayTime();
+    }
+
+    public void StartTimer()
+    {
+        if (Input.GetAxis("Vertical") != 0 || Input.GetAxis("Horizontal") != 0 || Input.GetButton("Jump"))
+            start = true;
+        timeOffset = Time.timeSinceLevelLoad;
+    }
+
+    public void DisplayTime()
+    {
+        timer = Time.timeSinceLevelLoad - timeOffset;
+        System.TimeSpan timeSpan = System.TimeSpan.FromSeconds(timer);
+        string t;
+
+        if (timer > 60)
+            t = string.Format("{0:D2}:{1:D2}:{2:D2}", timeSpan.Minutes, timeSpan.Seconds, timeSpan.Milliseconds/10);
+        else
+            t = string.Format("{0:D2}:{1:D2}", timeSpan.Seconds, timeSpan.Milliseconds/10);
+
+        timerText.text = t;
     }
 
     public void LoadStartMenu()
@@ -92,6 +136,11 @@ public class MenuController : MonoBehaviour
         SceneManager.LoadScene(1);
     }
 
+    public void LoadNextLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+
     public void ReloadLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
@@ -102,6 +151,12 @@ public class MenuController : MonoBehaviour
     public void PauseGame()
     {
         menuPanel.SetActive(true);
+        isPaused = true;
+        Time.timeScale = 0;
+    }
+
+    public void SimplePause()
+    {
         isPaused = true;
         Time.timeScale = 0;
     }
@@ -128,8 +183,15 @@ public class MenuController : MonoBehaviour
         isLeaderboard = false;
     }
 
+    public void OpenEndGamePanel()
+    {
+        endGamePanel.SetActive(true);
+    }
+
     public void PopulateLeaderboard()
     {
+        saveManager.SortFiles();
+
         int count = saveManager.saveFiles.Length;
         
         if (count > 0)
@@ -142,7 +204,7 @@ public class MenuController : MonoBehaviour
                 SaveData tmp = (SaveData)SerializationManager.Load(saveManager.saveFiles[i]);
 
                 System.TimeSpan time = System.TimeSpan.FromSeconds(tmp.time);
-                string t = string.Format("{0:D2}:{1:D2}:{2:D2}", time.Minutes, time.Seconds, time.Milliseconds);
+                string t = string.Format("{0:D2}:{1:D2}:{2:D2}", time.Minutes, time.Seconds, time.Milliseconds/10);
                 string name = tmp.name;
                 int rank = tmp.rank;
                 ranks[rank - 1].GetComponent<TMPro.TextMeshProUGUI>().text = string.Format("{0, 1}\t\t{1, 3}\t\t{2, 9}\t\t{3, 10}", rank, name, t, date);
