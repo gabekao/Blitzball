@@ -8,19 +8,19 @@ using System.Runtime.Serialization;
 public class SerializationManager 
 {
     // Creates a save file of the passed name with provided data
-    public static bool Save(string name, object saveData)
+    public static bool Save(string name, string directory, object saveData)
     {
         // Obtain formatter
         BinaryFormatter formatter = GetBinaryFormatter();
 
         // Check to see if saves directory exists, create if it doesn't exist
-        if (!Directory.Exists(Application.persistentDataPath + "/saves"))
+        if (!Directory.Exists(Application.persistentDataPath + directory))
         {
-            Directory.CreateDirectory(Application.persistentDataPath + "/saves");
+            Directory.CreateDirectory(Application.persistentDataPath + directory);
         }
 
         // Concatenate the name of the file to the path
-        string path = Application.persistentDataPath + "/saves/" + name + ".data";
+        string path = Application.persistentDataPath + directory + name + ".data";
 
         // Create file from path
         FileStream fs = File.Create(path);
@@ -93,5 +93,11 @@ public class SerializationManager
 
         // Return formatter
         return formatter;
+    }
+
+    public static void DeleteFile(string name)
+    {
+        string file = Application.persistentDataPath + "/saves/" + name + ".data";
+        File.Delete(file);
     }
 }
