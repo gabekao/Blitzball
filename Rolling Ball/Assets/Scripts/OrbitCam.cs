@@ -39,8 +39,6 @@ public class OrbitCam : MonoBehaviour
 
         xRotation = Mathf.Clamp(xRotation, 0.0f, 89.0f);
 
-        Cursor.lockState = CursorLockMode.Locked;
-
         CheckIfIntersectingTheGround();
 
         Vector3 offsetTransformed = Quaternion.Euler(xRotation, yRotation, 0.0f) * offsetActual;
@@ -51,11 +49,6 @@ public class OrbitCam : MonoBehaviour
            if (hit.collider.CompareTag("Wall") && hit.distance <= offset.z)
                 transform.position = hit.point;
         }
-
-        if (!menuController.isPaused)
-            Cursor.lockState = CursorLockMode.Locked;
-        else
-            Cursor.lockState = CursorLockMode.None;
 
         transform.LookAt(target);
     }
