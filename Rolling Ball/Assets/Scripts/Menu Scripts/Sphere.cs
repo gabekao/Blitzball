@@ -30,11 +30,11 @@ public class Sphere : MonoBehaviour
         if (Vector3.Distance(rb.position, nextPos[j]) <= 5){
             rb.velocity = new Vector3(0, 0, 0);
             rb.angularVelocity = new Vector3(0, 0, 0);
-            Debug.Log("AY");
+            // Debug.Log("AY");
             transform.position = nextPos[j+1];
             direction *= -1;
             j = (j + 2) % 4;
-            Debug.Log(j);
+            // Debug.Log(j);
         }
         moveVector = (direction * Vector3.right);
         rb.AddForce(moveVector * speed);

@@ -60,9 +60,19 @@ public class PlayerMovement : MonoBehaviour
 
     private Vector3 previousVelocity;
 
+
+    //Audio Clips Start
+    private AudioSource audioSource;
+    [SerializeField] private AudioClip jumpInit;
+    [SerializeField] private AudioClip jumpLand;
+    //Audio Clips End
+
+    private bool wasInAir = false;
+
     // Start is called before the first frame update
     void Start()
     {
+        audioSource = gameObject.GetComponent<AudioSource>();
         rb = GetComponent<Rigidbody>();
         previousVelocity = rb.velocity;
         originalAngularDrag = rb.angularDrag;
@@ -100,13 +110,20 @@ public class PlayerMovement : MonoBehaviour
         }
 
         // For some reason, this works better over here
-        if (Input.GetButtonDown("Jump"))
+       
+        if (CheckGrounded())
         {
-            if (CheckGrounded())
-            {
-
-                rb.velocity = new Vector3(rb.velocity.x, jumpSpeed * jumpMult, rb.velocity.z);
+            if(wasInAir){
+                audioSource.PlayOneShot(jumpLand, 1.0f);
+                wasInAir = false;
             }
+            if (Input.GetButtonDown("Jump"))
+            {
+                rb.velocity = new Vector3(rb.velocity.x, jumpSpeed * jumpMult, rb.velocity.z);
+                audioSource.PlayOneShot(jumpInit, 1.0f);
+            }
+        } else {
+            wasInAir = true;
         }
 
         if (wallJumpTimerCurrent > 0)
@@ -164,8 +181,6 @@ public class PlayerMovement : MonoBehaviour
 
         Vector3 hitOffset = new Vector3(0.0f, 0.0f, collider.radius - 0.02f);
 
-        
-
         // center hit
         Debug.DrawRay(transform.position, Vector3.down);
         if (Physics.Raycast(transform.position, Vector3.down, out hit, collisionDistanceCheck))
@@ -183,7 +198,7 @@ public class PlayerMovement : MonoBehaviour
         for (int i = 0; i < 8; i++)
         {
             Vector3 hitOffsetRotated = Quaternion.Euler(0.0f, 360 / 8 * i, 0.0f) * hitOffset;
-            Debug.Log(hitOffsetRotated);
+            //Debug.Log(hitOffsetRotated);
             Debug.DrawRay(transform.position + hitOffsetRotated, Vector3.down);
             if (Physics.Raycast(transform.position + hitOffsetRotated, Vector3.down, out hit, collisionDistanceCheck))
             {

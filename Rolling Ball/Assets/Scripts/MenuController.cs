@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
+using UnityEngine.Audio;
+using UnityEngine.UI;
+
 
 public class MenuController : MonoBehaviour
 {
@@ -17,8 +20,17 @@ public class MenuController : MonoBehaviour
     private bool isLeaderboard = false;
     public bool isPaused = false;
 
+    //Audio Start
+    [SerializeField] AudioMixer mixer;
+    //Audio End
+
     public void Start()
     {
+        if(mixer){
+            mixer.SetFloat("SFXVolume", Mathf.Log10(PlayerPrefs.GetFloat("SFXVol")) * 20);
+            mixer.SetFloat("MusicVolume", Mathf.Log10(PlayerPrefs.GetFloat("MusicVol")) * 20);
+        }
+
         if (SceneManager.GetActiveScene().buildIndex != 0)
         {
             if (!menuPanel)
@@ -44,17 +56,25 @@ public class MenuController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) && SceneManager.GetActiveScene().name != "StartMenu")
-        {
-            if (!isLeaderboard)
-            {
-                if (!isPaused)
-                    PauseGame();
-                else
-                    ResumeGame();
+        if(SceneManager.GetActiveScene().name != "StartMenu"){
+            if (Input.GetKeyDown(KeyCode.Escape)) {
+                if (!isLeaderboard)
+                {
+                    if (!isPaused)
+                        PauseGame();
+                    else
+                        ResumeGame();
+                }
+                else{
+                    Cursor.visible = false;
+                    ExitLeaderboard();
+                }
             }
-            else
-                ExitLeaderboard();
+            if (!isPaused){
+                Cursor.visible = false;
+                Cursor.lockState = CursorLockMode.Locked;
+            } else
+                Cursor.lockState = CursorLockMode.Confined;
         }
     }
 

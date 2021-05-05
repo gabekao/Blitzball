@@ -62,7 +62,7 @@ public class GhostController : MonoBehaviour
     {
         if (!menuController.isPaused)
         {
-            Debug.Log("Counter: " + counter);
+            //Debug.Log("Counter: " + counter);
             // Perform action every 3 frames while not finished
             if ((frame % 4) == 0 && !finishLine.GetComponent<FinishController>().isFinished)
             {
