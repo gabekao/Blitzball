@@ -8,6 +8,7 @@ using UnityEngine.Audio;
 public class MenuController : MonoBehaviour
 {
     //🔴 Lmao this method is so scuffed. Sorry for the ugliness.
+    [SerializeField] private GameObject Level2Final;
     [SerializeField] private GameObject menuPanel;
     [SerializeField] private GameObject leaderboardPanel;
     [SerializeField] private GameObject timerPanel;
@@ -141,9 +142,15 @@ public class MenuController : MonoBehaviour
 
     public void LoadNextLevel()
     {
-        isPaused = false;
-        Time.timeScale = 1;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        if (SceneManager.GetActiveScene().name == "Level 2" && Level2Final){
+            Time.timeScale = 0;
+            isPaused = true;
+            Level2Final.SetActive(true);
+        } else {
+            isPaused = false;
+            Time.timeScale = 1;
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
     }
 
     public void ReloadLevel()
