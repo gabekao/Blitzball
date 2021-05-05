@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour
     private SphereCollider collider;
     [SerializeField] private float collisionDistanceCheck = 0.6f;
     [SerializeField] private string groundTag = "Ground";
+    [SerializeField] private string deathTag = "Death";
 
     [SerializeField] private bool wallJumpEnabled = true;
     [SerializeField] private bool wallJumpLimited = false;
@@ -28,12 +29,14 @@ public class PlayerController : MonoBehaviour
     private float wallJumpTimerCurrent = 0.0f;
 
     private bool wallJumped = false;
+    private bool saved = false;
 
     // Properties
     public float MoveSpeed { get => moveSpeed; set => moveSpeed = value; }
     public float JumpSpeed { get => jumpSpeed; set => jumpSpeed = value; }
     public bool WallJumpEnabled { get => wallJumpEnabled; set => wallJumpEnabled = value; }
     public bool WallJumpLimited { get => wallJumpLimited; set => wallJumpLimited = value; }
+
 
     // Start is called before the first frame update
     void Start()
@@ -55,6 +58,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        CheckGrounded();
         // For some reason, this works better over here
         if (Input.GetButtonDown("Jump"))
         {
@@ -82,6 +86,7 @@ public class PlayerController : MonoBehaviour
         {
             CheckWalljump(cameraRotationFlattened);
         }
+
     }
 
     bool CheckGrounded()
@@ -102,13 +107,18 @@ public class PlayerController : MonoBehaviour
                 return true;
 
             }
+            if (hit.collider.CompareTag(deathTag))
+            {
+                rb.velocity = Vector3.zero;
+                this.transform.position = game.lastCheckpointPos;
+            }
         }
 
         // circular hits
         for (int i = 0; i < 8; i++)
         {
             Vector3 hitOffsetRotated = Quaternion.Euler(0.0f, 360 / 8 * i, 0.0f) * hitOffset;
-            Debug.Log(hitOffsetRotated);
+            //Debug.Log(hitOffsetRotated);
             Debug.DrawRay(transform.position + hitOffsetRotated, Vector3.down);
             if (Physics.Raycast(transform.position + hitOffsetRotated, Vector3.down, out hit, collisionDistanceCheck))
             {
@@ -116,6 +126,11 @@ public class PlayerController : MonoBehaviour
                 {
                     wallJumped = false;
                     return true;
+                }
+                if (hit.collider.CompareTag(deathTag))
+                {
+                rb.velocity = Vector3.zero;
+                this.transform.position = game.lastCheckpointPos;
                 }
             }
         }
@@ -130,24 +145,31 @@ public class PlayerController : MonoBehaviour
 
         RaycastHit hit;
         Vector3 horizontalInputVector = cameraRotationY * new Vector3(Input.GetAxisRaw("Horizontal"), 0.0f, Input.GetAxisRaw("Vertical")).normalized;
-
-        Debug.DrawRay(transform.position, horizontalInputVector);
-        if (Physics.SphereCast(transform.position, collider.radius - 0.1f, horizontalInputVector, out hit))
+        Vector3 rayOffset = Vector3.forward * (collider.radius + 0.1f);
+        int numRays = 10;
+        
+        for (int i = 0; i < numRays; i++)
         {
-            if (hit.collider.CompareTag(groundTag) && hit.distance < collider.radius + 0.5f)
+            Vector3 sweepRotationOffsetV = Quaternion.Euler(0.0f, -45 + ((90 / numRays) * i), 0.0f) * horizontalInputVector;
+            Debug.DrawRay(transform.position, sweepRotationOffsetV);
+
+            if (Physics.Raycast(transform.position, sweepRotationOffsetV, out hit, collider.radius + 0.1f))
             {
-                Vector3 reflection = Vector3.Reflect(horizontalInputVector * rb.velocity.magnitude, hit.normal).normalized;
-                wallJumpTimerCurrent = wallJumpTimer;
+                if (hit.collider.CompareTag(groundTag))
+                {
+                    Vector3 reflection = Vector3.Reflect(horizontalInputVector * rb.velocity.magnitude, hit.normal).normalized;
+                    wallJumpTimerCurrent = wallJumpTimer;
 
-                if (wallJumpLimited)
-                    wallJumped = true;
+                    if (wallJumpLimited)
+                        wallJumped = true;
 
-                // otherwise the velocity stacks and it zooms
-                rb.velocity = Vector3.zero;
+                    // otherwise the velocity stacks and it zooms
+                    rb.velocity = Vector3.zero;
 
-                rb.AddForce((reflection * wallJumpForceHorizontal + Vector3.up * wallJumpForceVertical), ForceMode.VelocityChange);
+                    rb.AddForce((reflection * wallJumpForceHorizontal + Vector3.up * wallJumpForceVertical), ForceMode.VelocityChange);
+                    break;
+                }
             }
-            
         }
     }
 

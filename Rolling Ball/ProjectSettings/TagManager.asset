@@ -7,11 +7,15 @@ TagManager:
   - Ground
   - Checkpoint
   - Death
+  - Ghost
+  - FinishLine
+  - Wall
+  - Bounce
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Level
   - Water
   - UI
   - 

@@ -5,7 +5,11 @@ using UnityEngine;
 public class OrbitCam : MonoBehaviour
 {
     [SerializeField] private Transform target;
+
+    [SerializeField] private MenuController menuController;
     [SerializeField] private Vector3 offset = new Vector3(0.0f, 0.0f, -10.0f);
+
+    private Vector3 offsetActual;
 
     [SerializeField] private float yRotation = 0.0f;
     [SerializeField] private float xRotation = 5.0f;
@@ -22,6 +26,9 @@ public class OrbitCam : MonoBehaviour
         {
             target = GameObject.FindGameObjectWithTag("Player").transform;
         }
+
+
+        offsetActual = offset;
     }
 
     // Update is called once per frame
@@ -34,12 +41,34 @@ public class OrbitCam : MonoBehaviour
 
         Cursor.lockState = CursorLockMode.Locked;
 
+        CheckIfIntersectingTheGround();
 
-        Vector3 offsetTransformed = Quaternion.Euler(xRotation, yRotation, 0.0f) * offset;
+        Vector3 offsetTransformed = Quaternion.Euler(xRotation, yRotation, 0.0f) * offsetActual;
         transform.position = target.position + offsetTransformed;
 
+        if (Physics.Raycast(target.position, (transform.position - target.position).normalized, out RaycastHit hit))
+        {
+           if (hit.collider.CompareTag("Wall") && hit.distance <= offset.z)
+                transform.position = hit.point;
+        }
 
+        if (!menuController.isPaused)
+            Cursor.lockState = CursorLockMode.Locked;
+        else
+            Cursor.lockState = CursorLockMode.None;
 
         transform.LookAt(target);
+    }
+
+    void CheckIfIntersectingTheGround()
+    {
+        RaycastHit hit;
+
+        //Physics.Raycast(transform.position + hitOffsetRotated, Vector3.down, out hit, collisionDistanceCheck))
+        Debug.DrawLine(target.position, transform.position - target.position, Color.red);
+        if (Physics.Raycast(target.position, transform.position - target.position, out hit, Vector3.Distance(target.position, transform.position) * 2))
+        {
+            offsetActual.z = Mathf.Max(offset.z, -Vector3.Distance(target.position, transform.position));
+        }
     }
 }

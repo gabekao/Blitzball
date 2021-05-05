@@ -5,8 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class MenuController : MonoBehaviour
 {
-    private bool isPaused = false;
-    [SerializeField] private GameObject menuPanel;
+    //🔴 Lmao this method is so scuffed. Sorry for the ugliness.
+    public bool isPaused = false;
+    [SerializeField] private GameObject pauseMenu;
 
     // Start is called before the first frame update
     void Start()
@@ -17,12 +18,16 @@ public class MenuController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) && SceneManager.GetActiveScene().name != "StartMenu")
+        // Changing this line since this script won't exist in the start menu.
+        // if (Input.GetKeyDown(KeyCode.Escape) && SceneManager.GetActiveScene().name != "StartMenu")
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (!isPaused)
+            if (!isPaused){
                 PauseGame();
-            else
+            }
+            else{
                 ResumeGame();
+            }
         }
     }
 
@@ -49,16 +54,16 @@ public class MenuController : MonoBehaviour
 
     public void PauseGame()
     {
-        menuPanel.SetActive(true);
+        Time.timeScale = 0.0f;
+        pauseMenu.SetActive(true);
         isPaused = true;
-        Time.timeScale = 0;
     }
 
     public void ResumeGame()
     {
-        menuPanel.SetActive(false);
+        Time.timeScale = 1.0f;
+        pauseMenu.SetActive(false);
         isPaused = false;
-        Time.timeScale = 1;
     }
 
     // Game is now over
