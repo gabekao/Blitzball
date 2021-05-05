@@ -15,11 +15,11 @@ D:/Documents/GitHub/Sphere-Adventure-/Rolling Ball
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-56309
+56598
 Successfully changed project path to: D:/Documents/GitHub/Sphere-Adventure-/Rolling Ball
 D:/Documents/GitHub/Sphere-Adventure-/Rolling Ball
 Using Asset Import Pipeline V2.
-Refreshing native plugins compatible for Editor in 26.05 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 23.54 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2020.3.0f1 (c7b5465681fb)
 [Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2020.3.0f1/Editor/Data/Resources/UnitySubsystems
@@ -35,13 +35,13 @@ Initialize mono
 Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2020.3.0f1/Editor/Data/Managed'
 Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2020.3.0f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
 Mono config path = 'C:/Program Files/Unity/Hub/Editor/2020.3.0f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56908
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56504
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: C:/Program Files/Unity/Hub/Editor/2020.3.0f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.001258 seconds.
+Registered in 0.001272 seconds.
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 24.44 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 23.28 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
@@ -50,280 +50,48 @@ Mono: successfully reloaded assembly
 - Completed reload, in  0.671 seconds
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
-Registered in 0.000459 seconds.
+Registered in 0.000444 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.36 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 0.48 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
 Mono: successfully reloaded assembly
-- Completed reload, in  0.609 seconds
+- Completed reload, in  0.661 seconds
 Platform modules already initialized, skipping
 ========================================================================
 Worker process is ready to serve import requests
-Launched and connected shader compiler UnityShaderCompiler.exe after 0.03 seconds
-Refreshing native plugins compatible for Editor in 0.32 ms, found 0 plugins.
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.04 seconds
+Refreshing native plugins compatible for Editor in 0.29 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 1704 Unused Serialized files (Serialized files now loaded: 0)
 System memory in use before: 87.3 MB.
 System memory in use after: 87.4 MB.
 
 Unloading 100 unused Assets to reduce memory usage. Loaded Objects now: 2155.
-Total: 2.346900 ms (FindLiveObjects: 0.243800 ms CreateObjectMapping: 0.050600 ms MarkObjects: 1.951300 ms  DeleteObjects: 0.099800 ms)
+Total: 2.130500 ms (FindLiveObjects: 0.168500 ms CreateObjectMapping: 0.036200 ms MarkObjects: 1.820000 ms  DeleteObjects: 0.104900 ms)
 
 ========================================================================
 Received Import Request.
-  path: Assets/Scenes/Player.prefab
-  artifactKey: Guid(cf5cd840b6d86e549bc27d62a89a036c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/Player.prefab using Guid(cf5cd840b6d86e549bc27d62a89a036c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6c1e5fe2561f39afb4d2023458e438dd') in 0.096246 seconds
-  Import took 0.098627 seconds .
+  path: Assets/Scripts/MenuController.cs
+  artifactKey: Guid(03ae7ea6f84e1af4485013221863ae3f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/MenuController.cs using Guid(03ae7ea6f84e1af4485013221863ae3f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4565593ffae273f9b5f1b72df3fedfad') in 0.015138 seconds
+  Import took 0.017203 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 7.869909 seconds.
-  path: Assets/Imports/Metal textures pack/pattern 28/diffuse.tga
-  artifactKey: Guid(9250723e51492364abb4f24680a3a5b3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Imports/Metal textures pack/pattern 28/diffuse.tga using Guid(9250723e51492364abb4f24680a3a5b3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7ac7e65697487810ae25d5cfc359b408') in 0.040913 seconds
-  Import took 0.043146 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000142 seconds.
-  path: Assets/Imports/Metal textures pack/pattern 28/preview.jpg
-  artifactKey: Guid(fb1dca2f45dfa354ebf2b2389bb79350) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Imports/Metal textures pack/pattern 28/preview.jpg using Guid(fb1dca2f45dfa354ebf2b2389bb79350) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e6631858c004b68584ecb11ffbfbee3b') in 0.041300 seconds
-  Import took 0.043281 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000151 seconds.
-  path: Assets/Imports/Metal textures pack/pattern 28/normal.tga
-  artifactKey: Guid(005a1d4e1062dd94587a2e0167cab73c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Imports/Metal textures pack/pattern 28/normal.tga using Guid(005a1d4e1062dd94587a2e0167cab73c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f72edd67109f20bbd3af9bc53b68e6c3') in 0.011596 seconds
-  Import took 0.013301 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000146 seconds.
-  path: Assets/Imports/Metal textures pack/pattern 28/diffuse.tga
-  artifactKey: Guid(9250723e51492364abb4f24680a3a5b3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Imports/Metal textures pack/pattern 28/diffuse.tga using Guid(9250723e51492364abb4f24680a3a5b3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7ac7e65697487810ae25d5cfc359b408') in 0.009086 seconds
-  Import took 0.010924 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 57.182147 seconds.
-  path: Assets/Imports/Metal textures pack/pattern 01
-  artifactKey: Guid(f5cc8ce926200e840992ba1ca67785e3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Imports/Metal textures pack/pattern 01 using Guid(f5cc8ce926200e840992ba1ca67785e3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '75ba82cebafc05cd3017890223421087') in 0.004753 seconds
-  Import took 0.006881 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.075948 seconds.
-  path: Assets/Imports/Metal textures pack/pattern 01/diffuse.tga
-  artifactKey: Guid(9b1dbb54b9c5f1143aa7e0be2921a7bb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Imports/Metal textures pack/pattern 01/diffuse.tga using Guid(9b1dbb54b9c5f1143aa7e0be2921a7bb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'af7e674abbaeef158cbc73a3525e1372') in 0.018360 seconds
-  Import took 0.020583 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000119 seconds.
-  path: Assets/Imports/Metal textures pack/pattern 01/preview.jpg
-  artifactKey: Guid(aa0257eecdfa585408868c2a87a274b0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Imports/Metal textures pack/pattern 01/preview.jpg using Guid(aa0257eecdfa585408868c2a87a274b0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c9445dfd3e87d471ce8a1a5916061f2f') in 0.010241 seconds
-  Import took 0.011933 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000134 seconds.
-  path: Assets/Imports/Metal textures pack/pattern 01/normal.tga
-  artifactKey: Guid(d5854954021862c4fa2da43144b07404) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Imports/Metal textures pack/pattern 01/normal.tga using Guid(d5854954021862c4fa2da43144b07404) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6c280af9ff3df717ea2552e1be174c7c') in 0.012736 seconds
-  Import took 0.014525 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 1.472596 seconds.
-  path: Assets/Imports/Metal textures pack/pattern 02
-  artifactKey: Guid(8812df5e5a9c6884280fb01f7145e772) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Imports/Metal textures pack/pattern 02 using Guid(8812df5e5a9c6884280fb01f7145e772) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '882f123557cabf334045ca997ea36a17') in 0.004583 seconds
-  Import took 0.006894 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.070024 seconds.
-  path: Assets/Imports/Metal textures pack/pattern 02/diffuse.tga
-  artifactKey: Guid(d889d2a44b4845649bcd8ce458bae837) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Imports/Metal textures pack/pattern 02/diffuse.tga using Guid(d889d2a44b4845649bcd8ce458bae837) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '33936bd097f23f0469f8f9190c25da4d') in 0.020833 seconds
-  Import took 0.023013 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000155 seconds.
-  path: Assets/Imports/Metal textures pack/pattern 02/normal.tga
-  artifactKey: Guid(67281eba38c0da0429b588ccd843fc77) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Imports/Metal textures pack/pattern 02/normal.tga using Guid(67281eba38c0da0429b588ccd843fc77) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '55c702a96058d9a05dcbd8f50d72fc8f') in 0.014673 seconds
-  Import took 0.016544 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000138 seconds.
-  path: Assets/Imports/Metal textures pack/pattern 02/preview.jpg
-  artifactKey: Guid(6ef013bf690760148959c97deea14045) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Imports/Metal textures pack/pattern 02/preview.jpg using Guid(6ef013bf690760148959c97deea14045) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c12b350ef1c37d79b7194e6bc857cba4') in 0.012361 seconds
-  Import took 0.014317 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 1.595262 seconds.
-  path: Assets/Imports/Metal textures pack/pattern 03
-  artifactKey: Guid(35126421be1dade4aa145911b280af25) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Imports/Metal textures pack/pattern 03 using Guid(35126421be1dade4aa145911b280af25) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '399b772092d364b1013078c3d6d1c1a5') in 0.004637 seconds
-  Import took 0.006810 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.128337 seconds.
-  path: Assets/Imports/Metal textures pack/pattern 03/diffuse.tga
-  artifactKey: Guid(fe2a0c89a1db804408d0ce437e3d2f59) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Imports/Metal textures pack/pattern 03/diffuse.tga using Guid(fe2a0c89a1db804408d0ce437e3d2f59) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9b5e80cce3ae582ba511ffecffe92ece') in 0.019222 seconds
-  Import took 0.021289 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000251 seconds.
-  path: Assets/Imports/Metal textures pack/pattern 03/preview.jpg
-  artifactKey: Guid(094b07da3ad5162409852614336f9390) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Imports/Metal textures pack/pattern 03/preview.jpg using Guid(094b07da3ad5162409852614336f9390) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '68a2e1e203dd37c11f5f441572b78e11') in 0.013684 seconds
-  Import took 0.015455 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000141 seconds.
-  path: Assets/Imports/Metal textures pack/pattern 03/normal.tga
-  artifactKey: Guid(1e1dd049614ab114c964d06be44cc7a3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Imports/Metal textures pack/pattern 03/normal.tga using Guid(1e1dd049614ab114c964d06be44cc7a3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a1fcb0f32d6dccdeb860e87e12e831ab') in 0.010114 seconds
-  Import took 0.011785 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 1.571094 seconds.
-  path: Assets/Imports/Metal textures pack/pattern 04/diffuse.tga
-  artifactKey: Guid(555ee02ef69a5e34da1d4d961b7542af) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Imports/Metal textures pack/pattern 04/diffuse.tga using Guid(555ee02ef69a5e34da1d4d961b7542af) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b4d2d22252bebe2ee6c802f090143920') in 0.012388 seconds
-  Import took 0.014897 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000144 seconds.
-  path: Assets/Imports/Metal textures pack/pattern 04/preview.jpg
-  artifactKey: Guid(7e5f58b131b7be14a8c4983374f3608b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Imports/Metal textures pack/pattern 04/preview.jpg using Guid(7e5f58b131b7be14a8c4983374f3608b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c7f44480fc2b10b2e3969f00bf76269b') in 0.008295 seconds
-  Import took 0.010049 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000123 seconds.
-  path: Assets/Imports/Metal textures pack/pattern 04/normal.tga
-  artifactKey: Guid(627a1335b8727c348ac4edeb052e8423) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Imports/Metal textures pack/pattern 04/normal.tga using Guid(627a1335b8727c348ac4edeb052e8423) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '452a56c7e756564f3be4c1f3225ef6e3') in 0.008896 seconds
-  Import took 0.010482 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 1.816696 seconds.
-  path: Assets/Imports/Metal textures pack/pattern 42
-  artifactKey: Guid(635409d801786314296b82379792a3f7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Imports/Metal textures pack/pattern 42 using Guid(635409d801786314296b82379792a3f7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1c5d096df7280756b23fe2cc1be77fda') in 0.004169 seconds
-  Import took 0.006236 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.068493 seconds.
-  path: Assets/Imports/Metal textures pack/pattern 42/diffuse.tga
-  artifactKey: Guid(2f74a631c5a05634f8c37e6879204e64) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Imports/Metal textures pack/pattern 42/diffuse.tga using Guid(2f74a631c5a05634f8c37e6879204e64) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '67d614c4b9ffcb4a156f1a68d18666f0') in 0.012201 seconds
-  Import took 0.014283 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000123 seconds.
-  path: Assets/Imports/Metal textures pack/pattern 42/preview.jpg
-  artifactKey: Guid(6b2cee764e0e2bf4ea90baf49ddee012) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Imports/Metal textures pack/pattern 42/preview.jpg using Guid(6b2cee764e0e2bf4ea90baf49ddee012) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '31fe196701e0d721bf53768e82e52d0a') in 0.009079 seconds
-  Import took 0.011041 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000134 seconds.
-  path: Assets/Imports/Metal textures pack/pattern 42/Metal pattern 42.mat
-  artifactKey: Guid(645955e5c3a3a1f4fb83978d2a63240f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Imports/Metal textures pack/pattern 42/Metal pattern 42.mat using Guid(645955e5c3a3a1f4fb83978d2a63240f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c891879ceaffc007ae2aad848a093ae7') in 0.025599 seconds
-  Import took 0.027545 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000155 seconds.
-  path: Assets/Imports/Metal textures pack/pattern 42/normal.tga
-  artifactKey: Guid(99a869a33120c2c42bf93a499d6030f5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Imports/Metal textures pack/pattern 42/normal.tga using Guid(99a869a33120c2c42bf93a499d6030f5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e8e5c5b9cc3f17a2d6c509fea202cfa1') in 0.007059 seconds
-  Import took 0.008953 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.015319 seconds.
-  path: Assets/Imports/Metal textures pack/pattern 42/normal.tga
-  artifactKey: Guid(99a869a33120c2c42bf93a499d6030f5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Imports/Metal textures pack/pattern 42/normal.tga using Guid(99a869a33120c2c42bf93a499d6030f5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e8e5c5b9cc3f17a2d6c509fea202cfa1') in 0.007693 seconds
-  Import took 0.009868 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 3.744738 seconds.
-  path: Assets/Imports/Metal textures pack/pattern 41
-  artifactKey: Guid(fb6465e8aca79cc408294ba9fc8fbd62) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Imports/Metal textures pack/pattern 41 using Guid(fb6465e8aca79cc408294ba9fc8fbd62) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '10a7ab62afd03f1be51fb94d53428e47') in 0.004231 seconds
-  Import took 0.006431 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.046696 seconds.
-  path: Assets/Imports/Metal textures pack/pattern 41/diffuse.tga
-  artifactKey: Guid(d9e8a14c6d54ad4418847e9c7620f654) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Imports/Metal textures pack/pattern 41/diffuse.tga using Guid(d9e8a14c6d54ad4418847e9c7620f654) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0e72cca6aecab7504fc9c64f9318a5a6') in 0.011797 seconds
-  Import took 0.013848 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000160 seconds.
-  path: Assets/Imports/Metal textures pack/pattern 41/normal.tga
-  artifactKey: Guid(91bc4730324e4cf4d866c77b53517932) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Imports/Metal textures pack/pattern 41/normal.tga using Guid(91bc4730324e4cf4d866c77b53517932) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd729fe061d61fd76a9cbb95fd34a3022') in 0.010290 seconds
-  Import took 0.012531 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000127 seconds.
-  path: Assets/Imports/Metal textures pack/pattern 41/Metal pattern 41.mat
-  artifactKey: Guid(d953cc3916a287a4bb860d1b165577c5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Imports/Metal textures pack/pattern 41/Metal pattern 41.mat using Guid(d953cc3916a287a4bb860d1b165577c5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0cb13f280360b2f5f69fa4e91e1df130') in 0.008123 seconds
-  Import took 0.009926 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000131 seconds.
-  path: Assets/Imports/Metal textures pack/pattern 41/preview.jpg
-  artifactKey: Guid(dd8c32bc3b8c52d4db580085f75a5b66) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Imports/Metal textures pack/pattern 41/preview.jpg using Guid(dd8c32bc3b8c52d4db580085f75a5b66) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '765d24fa5c8ead647ae3dca881a075ba') in 0.008649 seconds
-  Import took 0.010327 seconds .
+  Time since last request: 39.064816 seconds.
+  path: Assets/Scripts/MenuController.cs
+  artifactKey: Guid(03ae7ea6f84e1af4485013221863ae3f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/MenuController.cs using Guid(03ae7ea6f84e1af4485013221863ae3f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c1b0d95368d407ae2faaac843c73e20f') in 0.001222 seconds
+  Import took 0.003483 seconds .
 
 ========================================================================
 Received Prepare
 Registering precompiled user dll's ...
-Registered in 0.000382 seconds.
+Registered in 0.000416 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for WindowsStandalone target not found
 Refreshing native plugins compatible for Editor in 0.31 ms, found 0 plugins.
@@ -332,373 +100,37 @@ Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
 Mono: successfully reloaded assembly
-- Completed reload, in  0.555 seconds
+- Completed reload, in  0.590 seconds
 Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 0.32 ms, found 0 plugins.
+Refreshing native plugins compatible for Editor in 0.31 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 1662 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 87.9 MB.
-System memory in use after: 88.0 MB.
+System memory in use before: 84.4 MB.
+System memory in use after: 84.5 MB.
 
-Unloading 95 unused Assets to reduce memory usage. Loaded Objects now: 2204.
-Total: 2.030900 ms (FindLiveObjects: 0.188300 ms CreateObjectMapping: 0.042800 ms MarkObjects: 1.717800 ms  DeleteObjects: 0.080800 ms)
-
-========================================================================
-Received Import Request.
-  Time since last request: 36.566105 seconds.
-  path: Assets/Prefabs/Player.prefab
-  artifactKey: Guid(cf5cd840b6d86e549bc27d62a89a036c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs/Player.prefab using Guid(cf5cd840b6d86e549bc27d62a89a036c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ea9ab5bf586b15d264f19813981a1f65') in 0.045479 seconds
-  Import took 0.047830 seconds .
+Unloading 95 unused Assets to reduce memory usage. Loaded Objects now: 2159.
+Total: 1.716600 ms (FindLiveObjects: 0.143500 ms CreateObjectMapping: 0.034600 ms MarkObjects: 1.410100 ms  DeleteObjects: 0.127400 ms)
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.002596 seconds.
-  path: Assets/Prefabs/Player.prefab
-  artifactKey: Guid(cf5cd840b6d86e549bc27d62a89a036c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs/Player.prefab using Guid(cf5cd840b6d86e549bc27d62a89a036c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ea9ab5bf586b15d264f19813981a1f65') in 0.006424 seconds
-  Import took 0.008596 seconds .
+  Time since last request: 12.308877 seconds.
+  path: Assets/Scripts/MenuController.cs
+  artifactKey: Guid(03ae7ea6f84e1af4485013221863ae3f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/MenuController.cs using Guid(03ae7ea6f84e1af4485013221863ae3f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cc919bc80cf4118299b6a4a4207c6257') in 0.003251 seconds
+  Import took 0.005342 seconds .
 
 ========================================================================
 Received Import Request.
-  Time since last request: 46.449480 seconds.
-  path: Assets/Imports/Metal textures pack/pattern 40/diffuse.tga
-  artifactKey: Guid(f4fa2a42ef2f8e841a17fe2d2f6efb9c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Imports/Metal textures pack/pattern 40/diffuse.tga using Guid(f4fa2a42ef2f8e841a17fe2d2f6efb9c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5d02545e2be2f5836b33704f5ebf4e99') in 0.021933 seconds
-  Import took 0.024303 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000153 seconds.
-  path: Assets/Imports/Metal textures pack/pattern 40/preview.jpg
-  artifactKey: Guid(6eaf6a906f6753543801ff82736a545b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Imports/Metal textures pack/pattern 40/preview.jpg using Guid(6eaf6a906f6753543801ff82736a545b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1a1884b84db6fab8165b34799e9f768a') in 0.008242 seconds
-  Import took 0.010139 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000139 seconds.
-  path: Assets/Imports/Metal textures pack/pattern 40/normal.tga
-  artifactKey: Guid(5fbce6817cfe79f4b8169fdaf2b122f0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Imports/Metal textures pack/pattern 40/normal.tga using Guid(5fbce6817cfe79f4b8169fdaf2b122f0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4221dc3589ccaaaf757ace9312b605a4') in 0.009679 seconds
-  Import took 0.011330 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.361288 seconds.
-  path: Assets/Imports/Metal textures pack/pattern 39/diffuse.tga
-  artifactKey: Guid(d718a1c3d8c6a914680f49974e638f38) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Imports/Metal textures pack/pattern 39/diffuse.tga using Guid(d718a1c3d8c6a914680f49974e638f38) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2c3e52199e767fcc3a2fecb6359283f5') in 0.012979 seconds
-  Import took 0.015047 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000122 seconds.
-  path: Assets/Imports/Metal textures pack/pattern 39/normal.tga
-  artifactKey: Guid(64664526bdd283346af4b7e7689734b9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Imports/Metal textures pack/pattern 39/normal.tga using Guid(64664526bdd283346af4b7e7689734b9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '53c54613bd3725acf76acb756610a8a7') in 0.010439 seconds
-  Import took 0.012606 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000141 seconds.
-  path: Assets/Imports/Metal textures pack/pattern 39/Metal pattern 39.mat
-  artifactKey: Guid(b7c8a2b9727887c4ea787b6a172ba8a6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Imports/Metal textures pack/pattern 39/Metal pattern 39.mat using Guid(b7c8a2b9727887c4ea787b6a172ba8a6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c638924c2a7e7a4dfc1d542775a2c4b6') in 0.016135 seconds
-  Import took 0.017988 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000134 seconds.
-  path: Assets/Imports/Metal textures pack/pattern 39/preview.jpg
-  artifactKey: Guid(be4b6574afc0d164ca4cf0b22e7d5407) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Imports/Metal textures pack/pattern 39/preview.jpg using Guid(be4b6574afc0d164ca4cf0b22e7d5407) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9479b2a5eca2e62f60d68d731a3fd9f3') in 0.008880 seconds
-  Import took 0.011070 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.215394 seconds.
-  path: Assets/Imports/Metal textures pack/pattern 38/diffuse.tga
-  artifactKey: Guid(0d86ce144395b87488381b16a2faabe7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Imports/Metal textures pack/pattern 38/diffuse.tga using Guid(0d86ce144395b87488381b16a2faabe7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9512fe19e98a5cf2a8abda686eeaca36') in 0.006406 seconds
-  Import took 0.008395 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000151 seconds.
-  path: Assets/Imports/Metal textures pack/pattern 38/preview.jpg
-  artifactKey: Guid(a6062426bf5676e479379cdd4a88f507) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Imports/Metal textures pack/pattern 38/preview.jpg using Guid(a6062426bf5676e479379cdd4a88f507) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5d40fb5a02c6f2a21ce75e39f0192a2f') in 0.008547 seconds
-  Import took 0.010614 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000160 seconds.
-  path: Assets/Imports/Metal textures pack/pattern 38/normal.tga
-  artifactKey: Guid(555343e2364703a4a9141cb0d91087ef) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Imports/Metal textures pack/pattern 38/normal.tga using Guid(555343e2364703a4a9141cb0d91087ef) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8526de58375f4cbfcea462174e6985f1') in 0.006507 seconds
-  Import took 0.008185 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.316013 seconds.
-  path: Assets/Imports/Metal textures pack/pattern 37/diffuse.tga
-  artifactKey: Guid(915dc183c9f3db244bac6fcb817f2476) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Imports/Metal textures pack/pattern 37/diffuse.tga using Guid(915dc183c9f3db244bac6fcb817f2476) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '93211807d253c707901075b4b13894ac') in 0.011231 seconds
-  Import took 0.013190 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000149 seconds.
-  path: Assets/Imports/Metal textures pack/pattern 37/preview.jpg
-  artifactKey: Guid(9f9d6bfaae3833348b7f03e895f7e17e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Imports/Metal textures pack/pattern 37/preview.jpg using Guid(9f9d6bfaae3833348b7f03e895f7e17e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3da8e27b520664e407c7c10db9cfabe7') in 0.008348 seconds
-  Import took 0.010225 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000115 seconds.
-  path: Assets/Imports/Metal textures pack/pattern 37/normal.tga
-  artifactKey: Guid(adc0960bcca23b14da719bdbee111681) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Imports/Metal textures pack/pattern 37/normal.tga using Guid(adc0960bcca23b14da719bdbee111681) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7c00ec93b325b5479202dfd58ed2a43b') in 0.009731 seconds
-  Import took 0.011325 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000117 seconds.
-  path: Assets/Imports/Metal textures pack/pattern 37/Metal pattern 37.mat
-  artifactKey: Guid(67d2236b34d423b46a514ea817833ab6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Imports/Metal textures pack/pattern 37/Metal pattern 37.mat using Guid(67d2236b34d423b46a514ea817833ab6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '41b15af8013c0c8df8d3c7976e569d12') in 0.007734 seconds
-  Import took 0.009596 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.218769 seconds.
-  path: Assets/Imports/Metal textures pack/pattern 36/diffuse.tga
-  artifactKey: Guid(768951b5149dfca4598f7c1101a9cd98) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Imports/Metal textures pack/pattern 36/diffuse.tga using Guid(768951b5149dfca4598f7c1101a9cd98) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2e01fd55c9dcc64eae79531ac4391485') in 0.012763 seconds
-  Import took 0.014793 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000177 seconds.
-  path: Assets/Imports/Metal textures pack/pattern 36/preview.jpg
-  artifactKey: Guid(702c2a346d9de4744988d4971b65b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Imports/Metal textures pack/pattern 36/preview.jpg using Guid(702c2a346d9de4744988d4971b65b6dd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a1d7038565320bf83845b521bfcc601a') in 0.008468 seconds
-  Import took 0.009952 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000141 seconds.
-  path: Assets/Imports/Metal textures pack/pattern 36/Metal pattern 36.mat
-  artifactKey: Guid(b581dd7f344f54a4a9477210a69989ac) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Imports/Metal textures pack/pattern 36/Metal pattern 36.mat using Guid(b581dd7f344f54a4a9477210a69989ac) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4a3684188fd4971979b3e15d3b0e38fd') in 0.011647 seconds
-  Import took 0.013611 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000144 seconds.
-  path: Assets/Imports/Metal textures pack/pattern 36/normal.tga
-  artifactKey: Guid(68797f3701751294c95968616a6c81c6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Imports/Metal textures pack/pattern 36/normal.tga using Guid(68797f3701751294c95968616a6c81c6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ebc90b1cd1a49728ece674b3b7f773b3') in 0.005903 seconds
-  Import took 0.007725 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.368806 seconds.
-  path: Assets/Imports/Metal textures pack/pattern 35/diffuse.tga
-  artifactKey: Guid(c8176da20792ff1489489efb5b236897) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Imports/Metal textures pack/pattern 35/diffuse.tga using Guid(c8176da20792ff1489489efb5b236897) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9b5d7816d366a6aee95591dbdd855251') in 0.013978 seconds
-  Import took 0.016311 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000163 seconds.
-  path: Assets/Imports/Metal textures pack/pattern 35/preview.jpg
-  artifactKey: Guid(5764f8aca2d0e8d428e55a7bd2cebefe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Imports/Metal textures pack/pattern 35/preview.jpg using Guid(5764f8aca2d0e8d428e55a7bd2cebefe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '594ff0e1ab87f15a33ca81e14057be82') in 0.009420 seconds
-  Import took 0.011310 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000140 seconds.
-  path: Assets/Imports/Metal textures pack/pattern 35/normal.tga
-  artifactKey: Guid(7b71942f10d916f4aad70f2bb888f184) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Imports/Metal textures pack/pattern 35/normal.tga using Guid(7b71942f10d916f4aad70f2bb888f184) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c64eecbc2db0c60ae849d98e1ad08681') in 0.010216 seconds
-  Import took 0.011905 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000150 seconds.
-  path: Assets/Imports/Metal textures pack/pattern 35/Metal pattern 35.mat
-  artifactKey: Guid(9e52c53a0d29f2c49adf71e8cc6ca46f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Imports/Metal textures pack/pattern 35/Metal pattern 35.mat using Guid(9e52c53a0d29f2c49adf71e8cc6ca46f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '23e2c4cbb99ba0ac944465ddec88c459') in 0.007558 seconds
-  Import took 0.009695 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.398190 seconds.
-  path: Assets/Imports/Metal textures pack/pattern 34/diffuse.tga
-  artifactKey: Guid(0d112add9ddeb27458ef3c8d7468eebe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Imports/Metal textures pack/pattern 34/diffuse.tga using Guid(0d112add9ddeb27458ef3c8d7468eebe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'df30b41dc463d12a2833d8e524427d87') in 0.013196 seconds
-  Import took 0.015498 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000224 seconds.
-  path: Assets/Imports/Metal textures pack/pattern 34/Metal pattern 34.mat
-  artifactKey: Guid(8979de94ad943864a8a3c0c5ff620b01) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Imports/Metal textures pack/pattern 34/Metal pattern 34.mat using Guid(8979de94ad943864a8a3c0c5ff620b01) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0400507f512f664c82e3a09bb508583e') in 0.011786 seconds
-  Import took 0.014035 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000153 seconds.
-  path: Assets/Imports/Metal textures pack/pattern 34/normal.tga
-  artifactKey: Guid(5edc0f85ea81c164dbb31dd807e052e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Imports/Metal textures pack/pattern 34/normal.tga using Guid(5edc0f85ea81c164dbb31dd807e052e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '39cd3a036edd1994e176847d05b6d777') in 0.005160 seconds
-  Import took 0.007071 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000114 seconds.
-  path: Assets/Imports/Metal textures pack/pattern 34/preview.jpg
-  artifactKey: Guid(cd746029fac791542acceb923166767a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Imports/Metal textures pack/pattern 34/preview.jpg using Guid(cd746029fac791542acceb923166767a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f3af6bea895d0226d84f7f11a2c14ec9') in 0.009089 seconds
-  Import took 0.010914 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.392259 seconds.
-  path: Assets/Imports/Metal textures pack/pattern 33/diffuse.tga
-  artifactKey: Guid(888b6b0ed7308e443b36a063ec5145db) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Imports/Metal textures pack/pattern 33/diffuse.tga using Guid(888b6b0ed7308e443b36a063ec5145db) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '94cb36cb1e9861d4fea0dfd6d11a442f') in 0.014864 seconds
-  Import took 0.017091 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000191 seconds.
-  path: Assets/Imports/Metal textures pack/pattern 33/preview.jpg
-  artifactKey: Guid(a99fde0493008954abfbcacfe6df6a03) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Imports/Metal textures pack/pattern 33/preview.jpg using Guid(a99fde0493008954abfbcacfe6df6a03) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'be253f1312e8654ebae08d3e83f8d21a') in 0.009018 seconds
-  Import took 0.011168 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000137 seconds.
-  path: Assets/Imports/Metal textures pack/pattern 33/normal.tga
-  artifactKey: Guid(7cc55cec99e0c754a91dbea4fb1bfbba) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Imports/Metal textures pack/pattern 33/normal.tga using Guid(7cc55cec99e0c754a91dbea4fb1bfbba) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a968a362e0fac3ae1a4e6624763f22ff') in 0.009941 seconds
-  Import took 0.011660 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000140 seconds.
-  path: Assets/Imports/Metal textures pack/pattern 33/Metal pattern 33.mat
-  artifactKey: Guid(ca951a36bb708fa4596ab58ae6551bed) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Imports/Metal textures pack/pattern 33/Metal pattern 33.mat using Guid(ca951a36bb708fa4596ab58ae6551bed) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '498a16b69b296b63f597425340b45c57') in 0.008702 seconds
-  Import took 0.010824 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.732557 seconds.
-  path: Assets/Imports/Metal textures pack/pattern 32/diffuse.tga
-  artifactKey: Guid(0d1a2eb5ea6321141ad4f46c8a24bb58) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Imports/Metal textures pack/pattern 32/diffuse.tga using Guid(0d1a2eb5ea6321141ad4f46c8a24bb58) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4c7204094c132953f7ec2c04bdcaf00f') in 0.018488 seconds
-  Import took 0.020486 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000153 seconds.
-  path: Assets/Imports/Metal textures pack/pattern 32/Metal pattern 32.mat
-  artifactKey: Guid(13f617a7030a5904592f3220168f2363) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Imports/Metal textures pack/pattern 32/Metal pattern 32.mat using Guid(13f617a7030a5904592f3220168f2363) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b33843b54f25edb06eecbf624c551922') in 0.012902 seconds
-  Import took 0.014693 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000139 seconds.
-  path: Assets/Imports/Metal textures pack/pattern 32/preview.jpg
-  artifactKey: Guid(60df3a4a8224d2d4db851d42230e4fc6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Imports/Metal textures pack/pattern 32/preview.jpg using Guid(60df3a4a8224d2d4db851d42230e4fc6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e283742e47952ad76041cbb0f5302340') in 0.008844 seconds
-  Import took 0.010835 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000135 seconds.
-  path: Assets/Imports/Metal textures pack/pattern 32/normal.tga
-  artifactKey: Guid(491117f52653f594b9a6c39436505dd2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Imports/Metal textures pack/pattern 32/normal.tga using Guid(491117f52653f594b9a6c39436505dd2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7ad62800919b6ef2a8e31a2a63eb0b0e') in 0.006236 seconds
-  Import took 0.007883 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.465456 seconds.
-  path: Assets/Imports/Metal textures pack/pattern 31/diffuse.tga
-  artifactKey: Guid(3d40b4f6e5a21d64ca20c4cda676a4c5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Imports/Metal textures pack/pattern 31/diffuse.tga using Guid(3d40b4f6e5a21d64ca20c4cda676a4c5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f8e84ce15e671a87e86a765b80050e35') in 0.011289 seconds
-  Import took 0.013378 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000150 seconds.
-  path: Assets/Imports/Metal textures pack/pattern 31/normal.tga
-  artifactKey: Guid(bdbb6a502cfc83e41bb068241649b6ad) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Imports/Metal textures pack/pattern 31/normal.tga using Guid(bdbb6a502cfc83e41bb068241649b6ad) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c5a6a43f654b7bbdf5e717c96d5648c6') in 0.010105 seconds
-  Import took 0.011570 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000200 seconds.
-  path: Assets/Imports/Metal textures pack/pattern 31/preview.jpg
-  artifactKey: Guid(5991d0c8ff1061846a84dbc29893ceb6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Imports/Metal textures pack/pattern 31/preview.jpg using Guid(5991d0c8ff1061846a84dbc29893ceb6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '79fc91ebf50f0307e51e5c13ffdabd9a') in 0.008905 seconds
-  Import took 0.010810 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000123 seconds.
-  path: Assets/Imports/Metal textures pack/pattern 31/Metal pattern 31.mat
-  artifactKey: Guid(4f15a312657081d46bb9ca29bc7ccdc8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Imports/Metal textures pack/pattern 31/Metal pattern 31.mat using Guid(4f15a312657081d46bb9ca29bc7ccdc8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '82c1fdcc4ea23f8ac26f70bad53e11f2') in 0.008693 seconds
-  Import took 0.010475 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 4.912511 seconds.
-  path: Assets/Imports/Metal textures pack/pattern 30/diffuse.tga
-  artifactKey: Guid(cf54ca3e7acb32d4693f50824fc13fa5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Imports/Metal textures pack/pattern 30/diffuse.tga using Guid(cf54ca3e7acb32d4693f50824fc13fa5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '742cb2cd9009afc3b9ee10cd7965be50') in 0.012301 seconds
-  Import took 0.014706 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000159 seconds.
-  path: Assets/Imports/Metal textures pack/pattern 30/Metal pattern 30.mat
-  artifactKey: Guid(6412fc3d848100c499da33874dbf7c38) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Imports/Metal textures pack/pattern 30/Metal pattern 30.mat using Guid(6412fc3d848100c499da33874dbf7c38) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '45129bb0308fb7c26b0224ea33dab47f') in 0.007621 seconds
-  Import took 0.009706 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000160 seconds.
-  path: Assets/Imports/Metal textures pack/pattern 30/preview.jpg
-  artifactKey: Guid(89b58fb78de21fc4ab46e367468eeeda) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Imports/Metal textures pack/pattern 30/preview.jpg using Guid(89b58fb78de21fc4ab46e367468eeeda) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e9d82e9994a5a1866636d6a564a9de9d') in 0.008924 seconds
-  Import took 0.010772 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000112 seconds.
-  path: Assets/Imports/Metal textures pack/pattern 30/normal.tga
-  artifactKey: Guid(abef4bb70b2ac9d4d88cf773aa70bbea) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Imports/Metal textures pack/pattern 30/normal.tga using Guid(abef4bb70b2ac9d4d88cf773aa70bbea) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6b21b28dcb159367b2ae2f8987416d72') in 0.005697 seconds
-  Import took 0.007333 seconds .
+  Time since last request: 1.250789 seconds.
+  path: Assets/Scripts/MenuController.cs
+  artifactKey: Guid(03ae7ea6f84e1af4485013221863ae3f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scripts/MenuController.cs using Guid(03ae7ea6f84e1af4485013221863ae3f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cc919bc80cf4118299b6a4a4207c6257') in 0.001261 seconds
+  Import took 0.003573 seconds .
 
 ========================================================================
 Received Prepare
 Registering precompiled user dll's ...
-Registered in 0.000477 seconds.
+Registered in 0.000408 seconds.
 Begin MonoManager ReloadAssembly
 Native extension for WindowsStandalone target not found
 Refreshing native plugins compatible for Editor in 0.31 ms, found 0 plugins.
@@ -707,73 +139,15 @@ Invoked RoslynAnalysisRunner static constructor.
 RoslynAnalysisRunner will not be running.
 RoslynAnalysisRunner has terminated.
 Mono: successfully reloaded assembly
-- Completed reload, in  0.568 seconds
+- Completed reload, in  0.570 seconds
 Platform modules already initialized, skipping
 Refreshing native plugins compatible for Editor in 0.30 ms, found 0 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 1661 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 87.9 MB.
-System memory in use after: 88.0 MB.
+System memory in use before: 84.4 MB.
+System memory in use after: 84.5 MB.
 
-Unloading 95 unused Assets to reduce memory usage. Loaded Objects now: 2209.
-Total: 1.767300 ms (FindLiveObjects: 0.182300 ms CreateObjectMapping: 0.041900 ms MarkObjects: 1.470000 ms  DeleteObjects: 0.072200 ms)
-
-========================================================================
-Received Import Request.
-  Time since last request: 17.546792 seconds.
-  path: Assets/Prefabs/Player.prefab
-  artifactKey: Guid(cf5cd840b6d86e549bc27d62a89a036c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Prefabs/Player.prefab using Guid(cf5cd840b6d86e549bc27d62a89a036c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '48bb3a197ebc5e27ca98967e37a0bddf') in 0.045682 seconds
-  Import took 0.047957 seconds .
-
-========================================================================
-Received Import Request.
-  Time since last request: 6.639188 seconds.
-  path: Assets/Scenes/Level 1.unity
-  artifactKey: Guid(3b00fc9ed0075c344901106e090a8b1e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Scenes/Level 1.unity using Guid(3b00fc9ed0075c344901106e090a8b1e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ab27937324809d0427b764490fdd7877') in 0.004655 seconds
-  Import took 0.006802 seconds .
-
-========================================================================
-Received Prepare
-Registering precompiled user dll's ...
-Registered in 0.000451 seconds.
-Begin MonoManager ReloadAssembly
-Native extension for WindowsStandalone target not found
-Refreshing native plugins compatible for Editor in 0.33 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Invoked RoslynAnalysisRunner static constructor.
-RoslynAnalysisRunner will not be running.
-RoslynAnalysisRunner has terminated.
-Mono: successfully reloaded assembly
-- Completed reload, in  0.599 seconds
-Platform modules already initialized, skipping
-Refreshing native plugins compatible for Editor in 0.30 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 1661 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 87.9 MB.
-System memory in use after: 88.1 MB.
-
-Unloading 95 unused Assets to reduce memory usage. Loaded Objects now: 2213.
-Total: 1.869800 ms (FindLiveObjects: 0.151000 ms CreateObjectMapping: 0.043100 ms MarkObjects: 1.580400 ms  DeleteObjects: 0.094500 ms)
-
-========================================================================
-Received Import Request.
-  Time since last request: 82.332696 seconds.
-  path: Assets/Materials/Metal pattern 29.mat
-  artifactKey: Guid(eca5b77011a171c459e5a2256236dcfd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Materials/Metal pattern 29.mat using Guid(eca5b77011a171c459e5a2256236dcfd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '37710092dbfd00b6111decdbe8fbf28b') in 0.045438 seconds
-  Import took 0.047783 seconds .
-
-========================================================================
-Received Prepare
-Refreshing native plugins compatible for Editor in 0.66 ms, found 0 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 3 Unused Serialized files (Serialized files now loaded: 0)
-System memory in use before: 54.4 MB.
-System memory in use after: 54.6 MB.
-
-Unloading 2 unused Assets to reduce memory usage. Loaded Objects now: 2214.
-Total: 1.968800 ms (FindLiveObjects: 0.200800 ms CreateObjectMapping: 0.041900 ms MarkObjects: 1.713800 ms  DeleteObjects: 0.010700 ms)
+Unloading 95 unused Assets to reduce memory usage. Loaded Objects now: 2162.
+Total: 1.792600 ms (FindLiveObjects: 0.171800 ms CreateObjectMapping: 0.039100 ms MarkObjects: 1.499200 ms  DeleteObjects: 0.081900 ms)
 
 AssetImportWorkerClient::OnTransportError - code=2 error=End of file

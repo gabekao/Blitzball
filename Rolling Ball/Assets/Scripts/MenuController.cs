@@ -67,6 +67,9 @@ public class MenuController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyUp(KeyCode.L)){
+            LoadNextLevel();
+        }
         if (!start)
             StartTimer();
         else
