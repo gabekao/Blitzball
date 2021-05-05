@@ -138,6 +138,8 @@ public class MenuController : MonoBehaviour
 
     public void LoadNextLevel()
     {
+        isPaused = false;
+        Time.timeScale = 1;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 

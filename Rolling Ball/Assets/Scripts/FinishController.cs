@@ -60,6 +60,11 @@ public class FinishController : MonoBehaviour
             g.positions.Add(newData.positions[i]);
         }
 
+        for (int i = 0; i < newData.camPos.Count; i++)
+        {
+            g.camPos.Add(newData.camPos[i]);
+        }
+
         // Set rank and time values
         g.rank = 1;
         g.time = menuController.timer;
@@ -71,6 +76,9 @@ public class FinishController : MonoBehaviour
 
         // Display Input name field;
         finishPanel.SetActive(true);
+
+        // Enable cursor
+        Cursor.lockState = CursorLockMode.None;
     }
 
     // Save data to file
@@ -101,5 +109,7 @@ public class FinishController : MonoBehaviour
 
         // Reload level or load next level
         menuController.OpenEndGamePanel();
+
+        isFinished = false;
     }
 }

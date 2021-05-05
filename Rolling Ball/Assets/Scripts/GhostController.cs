@@ -10,16 +10,21 @@ public class GhostController : MonoBehaviour
     [SerializeField] private GameObject player;                 // Player object
     [SerializeField] private GameObject ghostPrefab;            // Ghost prefab object
     [SerializeField] private MenuController menuController;     // Contains pause state
+    [SerializeField] private RawImage ghostCam;                 // Ghost camera
 
     private GameObject finishLine;      // Finish line
     private GameObject ghost;           // Ghost object moving around
+    private GameObject ghostCamera;     // Ghost camera
+    private GameObject mainCamera;      // Main camera
     private Transform initPos;          // Initial player position
+    private Transform initGhost;        // Initial ghost position
     private SaveManager saveManager;    // Save manager being used
 
     public SaveData newData;            // New incoming save data
     public SaveData loadedData;         // Loaded data
 
     private int counter = 0;            // Ghost position counter
+    private int camCounter = 0;         // Camera position counter
     private int frame = 1;              // For counting/limiting frames
     private int curGhost = 1;           // Current leaderboard ghost
     private bool ghostExists = false;   // Checks state of load file
@@ -30,6 +35,14 @@ public class GhostController : MonoBehaviour
         // Attach player if null
         if (!player)
             player = GameObject.FindGameObjectWithTag("Player");
+
+        // Attach camera if null
+        if (!mainCamera)
+            mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
+
+        // Attach camera if null
+        if (!ghostCamera)
+            ghostCamera = GameObject.FindGameObjectWithTag("GhostCamera");
 
         // Attach ghost if null
         if (!ghostPrefab)
@@ -56,24 +69,29 @@ public class GhostController : MonoBehaviour
         
         ghostExists = false;
 
+        initGhost = ghostCamera.transform;
+
         // Check to see if load file available
         CheckGhost();
     }
 
 
-    // Update is called once per frame
-    void Update()
+    private void FixedUpdate()
     {
         if (!menuController.isPaused && menuController.start)
         {
             // Perform action every 3 frames while not finished
-            if ((frame % 4) == 0 && !finishLine.GetComponent<FinishController>().isFinished)
+            if (!finishLine.GetComponent<FinishController>().isFinished)
             {
                 // Load ghost if load file exists
                 if (ghostExists)
+                {
                     LoadGhost();
+                    //LoadCamera();
+                }
                 // Save current player position
                 SaveGhost();
+                SaveCamera();
                 // Reset frame counter to 1
                 frame = 1;
             }
@@ -81,6 +99,8 @@ public class GhostController : MonoBehaviour
             frame++;
         }
     }
+
+
 
     // Saves player positions as ghost data
     public void SaveGhost()
@@ -93,6 +113,18 @@ public class GhostController : MonoBehaviour
         };
         // Add ghost data to current positions list
         newData.positions.Add(gD);
+
+    }
+
+    public void SaveCamera()
+    {
+        CameraData cD = new CameraData
+        {
+            position = mainCamera.transform.position,
+            rotation = mainCamera.transform.rotation
+        };
+
+        newData.camPos.Add(cD);
     }
 
     // Loads ghost positional data
@@ -105,10 +137,35 @@ public class GhostController : MonoBehaviour
         // Move created ghost object by positional values
         ghost.transform.position = pos.position;
         ghost.transform.rotation = pos.rotation;
-        
+
+        // Create ghost camera data from loaded data
+        CameraData cam = new CameraData();
+        cam = loadedData.camPos[counter];
+
+        // Set ghost camera position
+        ghostCamera.transform.position = cam.position;
+        //ghostCamera.transform.rotation = cam.rotation;
+        ghostCamera.transform.LookAt(ghost.transform);
+
+
         // Increment position counter until it reaches the end
         if (loadedData.positions.Count - 1 != counter)
             counter++;
+    }
+
+    public void LoadCamera()
+    {
+        // Create ghost camera data from loaded data
+        CameraData cam = new CameraData();
+        cam = loadedData.camPos[camCounter];
+
+        // Set ghost camera position
+        ghostCamera.transform.position = cam.position;
+        //ghostCamera.transform.rotation = cam.rotation;
+        ghostCamera.transform.LookAt(ghost.transform);
+
+        if (loadedData.camPos.Count - 1 != camCounter)
+            camCounter++;
     }
 
     // Check to see if load data is available
@@ -140,7 +197,15 @@ public class GhostController : MonoBehaviour
 
             // Set counter to 0
             counter = 0;
+            camCounter = 0;
         }
+
+        if (!ghostExists)
+            ghostCamera.SetActive(false);
+        else
+            ghostCamera.SetActive(true);
+
+        ghostCamera.transform.position = initGhost.position;
     }
 
     private void OnEnable()
@@ -160,6 +225,14 @@ public class GhostController : MonoBehaviour
             // Attach player if null
             if (!player)
                 player = GameObject.FindGameObjectWithTag("Player");
+
+            // Attach camera if null
+            if (!mainCamera)
+                mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
+
+            // Attach camera if null
+            if (!ghostCamera)
+                ghostCamera = GameObject.FindGameObjectWithTag("GhostCamera");
 
             // Attach ghost if null
             if (!ghostPrefab)
@@ -183,6 +256,10 @@ public class GhostController : MonoBehaviour
             // Initialize save data objects
             newData = new SaveData();
             loadedData = new SaveData();
+
+            ghostExists = false;
+
+            initGhost = ghostCamera.transform;
 
             // Check to see if load file available
             CheckGhost();

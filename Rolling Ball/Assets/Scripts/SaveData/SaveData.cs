@@ -11,6 +11,9 @@ public class SaveData
     // Contains previously mapped positions, if they exist
     public List<GhostData> positions = new List<GhostData>();
 
+    // Contains camera positions
+    public List<CameraData> camPos = new List<CameraData>();
+
     // Contains rank
     public int rank;
 

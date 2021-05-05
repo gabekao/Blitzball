@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 6029505542622011005}
   - component: {fileID: 6029505542622011004}
   - component: {fileID: 6029505542622011006}
+  - component: {fileID: -9106115307732500423}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -134,6 +135,10 @@ MonoBehaviour:
   sandImpact: {fileID: 8300000, guid: 10faf9a81905465429b2c0c275b3534b, type: 3}
   rubberImpact: {fileID: 8300000, guid: af00f04a2c038b549889274d85d7f28a, type: 3}
   iceImpact: {fileID: 8300000, guid: bb027c3db47d1dd4bb5f613bd257c0d0, type: 3}
+  sandVolume: 0
+  iceVolume: 0
+  rubberVolume: 0
+  normalVolume: 0
   normalMaterial: {fileID: 2100000, guid: eda85415b0518994fae151e6ad9a2e2c, type: 2}
   dieMaterial: {fileID: 2100000, guid: 1badfbda5940be542baf0facf3043179, type: 2}
   jumpInit: {fileID: 8300000, guid: 4b6aae323b60af74386c3225710665d9, type: 3}
@@ -251,3 +256,11 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!81 &-9106115307732500423
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6029505542622011007}
+  m_Enabled: 1

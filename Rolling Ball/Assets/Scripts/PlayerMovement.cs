@@ -72,6 +72,14 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private AudioClip sandImpact;
     [SerializeField] private AudioClip rubberImpact;
     [SerializeField] private AudioClip iceImpact;
+    [Range(0, 1)]
+    [SerializeField] float sandVolume;
+    [Range(0, 1)]
+    [SerializeField] float iceVolume;
+    [Range(0, 1)]
+    [SerializeField] float rubberVolume;
+    [Range(0, 1)]
+    [SerializeField] float normalVolume;
 
     [Header("Death Variables")]
     // [SerializeField] private Color deathColor = Color.red;
@@ -321,26 +329,26 @@ public class PlayerMovement : MonoBehaviour
                 {
                     if (currentSpecialTerrain == SpecialTerrainType.Rubber)
                     {
-                        audioSource.PlayOneShot(rubberImpact, 1.0f);
+                        audioSource.PlayOneShot(rubberImpact, rubberVolume);
                         rb.velocity = new Vector3(rb.velocity.x, -previousVelocity.y * rubberGroundBounciness, rb.velocity.z);
                     }
                     else if (currentSpecialTerrain == SpecialTerrainType.Sand)
                     {
-                        audioSource.PlayOneShot(sandImpact, 1.0f);
+                        audioSource.PlayOneShot(sandImpact, sandVolume);
                     }
                     else if (currentSpecialTerrain == SpecialTerrainType.Slippery)
                     {
-                        audioSource.PlayOneShot(iceImpact, 1.0f);
+                        audioSource.PlayOneShot(iceImpact, iceVolume);
                     }
                     else
                     {
-                        audioSource.PlayOneShot(jumpLand, 1.0f);
+                        audioSource.PlayOneShot(jumpLand, normalVolume);
                     }
                 }
                 break;
             case "Bounce":
-                audioSource.PlayOneShot(rubberImpact, 1.0f);
-                rb.AddForce((Vector3.up * 20), ForceMode.VelocityChange);
+                audioSource.PlayOneShot(rubberImpact, rubberVolume);
+                rb.AddForce((Vector3.up * 25), ForceMode.VelocityChange);
                 break;
                 
             default:
