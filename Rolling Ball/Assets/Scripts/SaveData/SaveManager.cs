@@ -8,8 +8,6 @@ using UnityEngine.EventSystems;
 
 public class SaveManager: MonoBehaviour
 {
-    [SerializeField] private Text ghostText;        // Displays ghost time
-
     public string[] saveFiles;      // File names
     public string directory;        // File directory
 
@@ -88,12 +86,5 @@ public class SaveManager: MonoBehaviour
         {
             File.Delete(file);
         }
-    }
-
-    // Display time
-    public void DisplayTime(float time)
-    {
-        // Set test to time
-        //ghostText.text = "Ghost Time: " + time.ToString();
     }
 }

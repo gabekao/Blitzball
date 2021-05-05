@@ -19,8 +19,8 @@ GameObject:
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &6029505542622010977
 Transform:
@@ -129,6 +129,13 @@ MonoBehaviour:
   collisionDistanceCheck: 0.61
   groundTag: Ground
   cameraTransform: {fileID: 0}
+  zapDeathSoundPrefab: {fileID: 5241537432002375048, guid: 2e1fa4792ac1f02459a36f2ee08b8f4d,
+    type: 3}
+  sandImpact: {fileID: 8300000, guid: 10faf9a81905465429b2c0c275b3534b, type: 3}
+  rubberImpact: {fileID: 8300000, guid: af00f04a2c038b549889274d85d7f28a, type: 3}
+  iceImpact: {fileID: 8300000, guid: bb027c3db47d1dd4bb5f613bd257c0d0, type: 3}
+  normalMaterial: {fileID: 2100000, guid: eda85415b0518994fae151e6ad9a2e2c, type: 2}
+  dieMaterial: {fileID: 2100000, guid: 1badfbda5940be542baf0facf3043179, type: 2}
   jumpInit: {fileID: 8300000, guid: 4b6aae323b60af74386c3225710665d9, type: 3}
   jumpLand: {fileID: 8300000, guid: 7fd98dfb7c0d3f944a42431324eab167, type: 3}
 --- !u!54 &6029505542622011004
@@ -160,7 +167,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.787
   m_Pitch: 1
   Loop: 0
   Mute: 0

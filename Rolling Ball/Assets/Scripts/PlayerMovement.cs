@@ -3,6 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
+public enum PlayerState
+{
+    Normal,
+    Dead
+}
+
+
 public class PlayerMovement : MonoBehaviour
 {
     private GameController game;
@@ -42,10 +49,11 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 moveVector = Vector3.zero;
     private Rigidbody rb;
     [SerializeField] private Transform cameraTransform;
+    [SerializeField] private GameObject zapDeathSoundPrefab;
 
     private SphereCollider collider;
     private float originalAngularDrag;
-
+    private PlayerState state = PlayerState.Normal;
 
     private float wallJumpTimer = 0.5f;
     private float wallJumpTimerCurrent = 0.0f;
@@ -60,6 +68,16 @@ public class PlayerMovement : MonoBehaviour
 
     private Vector3 previousVelocity;
 
+    [Header("Sound Variables")]
+    [SerializeField] private AudioClip sandImpact;
+    [SerializeField] private AudioClip rubberImpact;
+    [SerializeField] private AudioClip iceImpact;
+
+    [Header("Death Variables")]
+    // [SerializeField] private Color deathColor = Color.red;
+    [SerializeField] private Material normalMaterial;
+    [SerializeField] private Material dieMaterial;
+    // [SerializeField] private float dieColorSpeed = 1.0f;
 
     //Audio Clips Start
     private AudioSource audioSource;
@@ -114,7 +132,7 @@ public class PlayerMovement : MonoBehaviour
         if (CheckGrounded())
         {
             if(wasInAir){
-                audioSource.PlayOneShot(jumpLand, 1.0f);
+                
                 wasInAir = false;
             }
             if (Input.GetButtonDown("Jump"))
@@ -134,6 +152,14 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        if (state == PlayerState.Dead)
+        {
+            rb.velocity = Vector3.zero;
+            rb.useGravity = false;
+            
+
+            return;
+        }
         CheckIfTerrainIsSpecial();
         Quaternion cameraRotationFlattened = Quaternion.Euler(0.0f, cameraTransform.rotation.eulerAngles.y, 0.0f);
 
@@ -281,17 +307,42 @@ public class PlayerMovement : MonoBehaviour
     {
         switch(collision.gameObject.tag){
             case "Death":
-                game.Restart();
+                if (state == PlayerState.Normal)
+                {
+                    state = PlayerState.Dead;
+                    GetComponent<Renderer>().material = dieMaterial;
+                    Instantiate(zapDeathSoundPrefab, transform.position, Quaternion.identity);
+                    StartCoroutine(Die());
+                }
+                
                 break;
             case "Ground":
-                if (currentSpecialTerrain == SpecialTerrainType.Rubber)
-            {
-                rb.velocity = new Vector3(rb.velocity.x, -previousVelocity.y * rubberGroundBounciness , rb.velocity.z);
-            }
+                if (CheckGrounded())
+                {
+                    if (currentSpecialTerrain == SpecialTerrainType.Rubber)
+                    {
+                        audioSource.PlayOneShot(rubberImpact, 1.0f);
+                        rb.velocity = new Vector3(rb.velocity.x, -previousVelocity.y * rubberGroundBounciness, rb.velocity.z);
+                    }
+                    else if (currentSpecialTerrain == SpecialTerrainType.Sand)
+                    {
+                        audioSource.PlayOneShot(sandImpact, 1.0f);
+                    }
+                    else if (currentSpecialTerrain == SpecialTerrainType.Slippery)
+                    {
+                        audioSource.PlayOneShot(iceImpact, 1.0f);
+                    }
+                    else
+                    {
+                        audioSource.PlayOneShot(jumpLand, 1.0f);
+                    }
+                }
                 break;
             case "Bounce":
-                rb.AddForce((Vector3.up * 25), ForceMode.VelocityChange);
+                audioSource.PlayOneShot(rubberImpact, 1.0f);
+                rb.AddForce((Vector3.up * 20), ForceMode.VelocityChange);
                 break;
+                
             default:
                 break;
         }
@@ -300,11 +351,18 @@ public class PlayerMovement : MonoBehaviour
 
     void AlwaysDrawWallJumpRay()
     {
-
+        
     }
 
     void DetermineTerrainType()
     {
 
+    }
+
+    IEnumerator Die()
+    {
+        yield return new WaitForSeconds(1.0f);
+        GetComponent<Renderer>().material = normalMaterial;
+        game.Restart();
     }
 }

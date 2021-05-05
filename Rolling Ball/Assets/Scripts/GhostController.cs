@@ -21,7 +21,9 @@ public class GhostController : MonoBehaviour
 
     private int counter = 0;            // Ghost position counter
     private int frame = 1;              // For counting/limiting frames
+    private int curGhost = 1;           // Current leaderboard ghost
     private bool ghostExists = false;   // Checks state of load file
+
 
     void Start()
     {
@@ -112,11 +114,18 @@ public class GhostController : MonoBehaviour
     // Check to see if load data is available
     public void CheckGhost()
     {
+        // Get ghost prefs
+        curGhost = PlayerPrefs.GetInt("CurrentGhost");
+
+        // If curGhost is not in range, set to 1
+        if (curGhost < 1 || curGhost > 5)
+            curGhost = 1;
+
         // Get directory name
         string directory = "/" + SceneManager.GetActiveScene().name + "/";
 
         // Read 1st save data
-        loadedData = (SaveData)SerializationManager.Load(Application.persistentDataPath + directory + "1.data");
+        loadedData = (SaveData)SerializationManager.Load(Application.persistentDataPath + directory + curGhost.ToString() + ".data");
 
         // Check if ghost positions are available
         if (loadedData != null)
@@ -131,26 +140,7 @@ public class GhostController : MonoBehaviour
 
             // Set counter to 0
             counter = 0;
-
-            // Display ghost time
-            saveManager.DisplayTime(loadedData.time);
         }
-    }
-
-    // Loads new ghost data
-    public void LoadNewGhost(SaveData g)
-    {
-        // Set new loaded data
-        loadedData = g;
-
-        // Ensure ghost exists
-        ghostExists = true;
-
-        // Initialize ghost position, counter and frame
-        ghost.transform.position = initPos.position;
-        ghost.transform.rotation = initPos.rotation;
-        counter = 0;
-        frame = 1;
     }
 
     private void OnEnable()

@@ -14,11 +14,11 @@ public class MenuController : MonoBehaviour
     [SerializeField] private GameObject endGamePanel;
     [SerializeField] private GameObject[] ranks;
     [SerializeField] private TMPro.TextMeshProUGUI timerText;
-
     private SaveManager saveManager;
     private GhostController ghostController;
     private FinishController finishController;
     private SaveData loadedData;
+
     private bool isLeaderboard = false;
     private float timeOffset;
     public float timer;
@@ -49,7 +49,7 @@ public class MenuController : MonoBehaviour
 
             if (!endGamePanel)
                 endGamePanel = GameObject.Find("EndGamePanel");
-
+            
             if (loadedData == null)
                 loadedData = GameObject.Find("GameManager").GetComponent<GhostController>().loadedData;
 
@@ -69,6 +69,8 @@ public class MenuController : MonoBehaviour
     {
         if (!start)
             StartTimer();
+        else
+            DisplayTime();
 
         if (SceneManager.GetActiveScene().name != "StartMenu"  )
         {
@@ -97,8 +99,6 @@ public class MenuController : MonoBehaviour
                     timerPanel.SetActive(false);
             }
         }
-        if(start)
-            DisplayTime();
     }
 
     public void StartTimer()
@@ -196,6 +196,8 @@ public class MenuController : MonoBehaviour
         
         if (count > 0)
         {
+            if (count > 5)
+                count = 5;
 
             string date = System.DateTime.Now.ToString("MM/dd/yyyy");
 
@@ -233,17 +235,20 @@ public class MenuController : MonoBehaviour
         // Get button name
         string t = EventSystem.current.currentSelectedGameObject.name;
 
-        // Create tmp save data object
-        SaveData g = new SaveData();
+        // Exit leaderboard
+        ExitLeaderboard();
 
-        // Load appropriate data
-        g = (SaveData)SerializationManager.Load(Application.persistentDataPath + directory + t + ".data");
+        // Resume Game
+        ResumeGame();
 
-        // Pass new ghost info to ghost controller
-        ghostController.LoadNewGhost(g);
+        // Set start to false;
+        start = false;
 
-        // Display time of ghost
-        saveManager.DisplayTime(g.time);
+        // Set Current ghost
+        PlayerPrefs.SetInt("CurrentGhost", System.Int32.Parse(t));
+
+        // Move player to start
+        ReloadLevel();
     }
 
     // Game is now over
