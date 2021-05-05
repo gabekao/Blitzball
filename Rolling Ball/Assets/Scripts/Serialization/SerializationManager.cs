@@ -40,7 +40,7 @@ public class SerializationManager
         // Make sure file exists, if not return null
         if (!File.Exists(path))
         {
-            Debug.Log("Returned null");
+            Debug.Log("File does not exist: " + path);
             return null;
         }
 
