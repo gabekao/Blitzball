@@ -7,7 +7,10 @@ public class GameController : MonoBehaviour
 {
     private static GameController instance;
     public Vector3 lastCheckpointPos;
+
+    
     void Awake(){
+        // Don't destroy game manager on scene reloads
         if (instance == null){
             instance = this;
             DontDestroyOnLoad(instance);
