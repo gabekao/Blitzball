@@ -23,6 +23,9 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (SceneManager.GetActiveScene().buildIndex == 0 && instance != null)
+            Destroy(GameObject.Find("GameManager"));
+
         if (Input.GetKeyDown("r")){
             Restart();
             //Debug.Log("R");

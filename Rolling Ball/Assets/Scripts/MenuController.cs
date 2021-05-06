@@ -33,12 +33,16 @@ public class MenuController : MonoBehaviour
     public void Start()
     {
 
+        // Mixer handling if it exists
         if(mixer){
             mixer.SetFloat("SFXVolume", Mathf.Log10(PlayerPrefs.GetFloat("SFXVol")) * 20);
             mixer.SetFloat("MusicVolume", Mathf.Log10(PlayerPrefs.GetFloat("MusicVol")) * 20);
         }
+
+        // Check to see that game is not in start menu
         if (SceneManager.GetActiveScene().buildIndex != 0)
         {
+            // Ensure all objects are loaded if null
             if (!menuPanel)
                 menuPanel = GameObject.Find("MenuPanel");
 
@@ -68,6 +72,7 @@ public class MenuController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Loads the next scene incrementally
         if (Input.GetKeyUp(KeyCode.L)){
             LoadNextLevel();
         }
